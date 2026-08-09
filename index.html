@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bridging the Action Gap | CoRL 2026 Workshop</title>
+<title>G2A: From Generative Models to Robot Actions | CoRL 2026 Workshop</title>
+<meta name="description" content="G2A: From Generative Models to Robot Actions — a half-day workshop at CoRL 2026, November 12, 2026, Austin, Texas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,6 +21,7 @@
     --teal-soft:#e6f1f5;    /* pale cyan wash */
     --shadow:0 1px 0 rgba(26,36,54,.05), 0 10px 30px -18px rgba(26,36,54,.30);
     --maxw:1080px;
+    --prose:920px;          /* shared measure so centered text columns align */
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;scroll-padding-top:74px;}
@@ -66,39 +68,35 @@
   /* ---------- hero ---------- */
   header.hero{
     max-width:var(--maxw);margin:0 auto;padding:78px 24px 56px;
-    position:relative;
-  }
-  .eyebrow{
-    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
-    letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
-    margin-bottom:18px;
+    position:relative;text-align:center;
   }
   .hero h1{
-    font-size:clamp(38px,6.2vw,72px);font-weight:800;letter-spacing:-.02em;
-    margin:0 0 6px;max-width:14ch;
+    font-size:clamp(27px,4.2vw,48px);font-weight:800;letter-spacing:-.02em;
+    margin:0 auto 6px;max-width:22ch;
   }
-  .hero h1 .gap{
-    color:var(--accent);position:relative;white-space:nowrap;
-  }
-  .hero h1 .gap::after{
-    content:"";position:absolute;left:0;right:0;bottom:.08em;height:.14em;
-    background:repeating-linear-gradient(90deg,var(--accent) 0 8px,transparent 8px 14px);
-    opacity:.55;
-  }
+  .hero h1 .g2a{color:var(--accent);}
   .hero .sub{
-    font-size:clamp(18px,2.4vw,22px);color:var(--ink-soft);font-weight:500;
-    max-width:60ch;margin:8px 0 28px;font-family:'Sora',sans-serif;
+    font-size:clamp(17px,2.1vw,20px);color:var(--ink-soft);font-weight:500;
+    max-width:64ch;margin:18px auto 0;font-family:'Sora',sans-serif;
   }
-  .meta-row{
-    display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;
+
+  /* ---------- hero facts (time & location) ---------- */
+  .hero-facts{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:14px;margin:34px auto 0;max-width:900px;text-align:left;
   }
-  .chip{
-    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
-    background:var(--paper-2);border:1px solid var(--line);border-radius:999px;
-    padding:8px 15px;color:var(--ink);display:inline-flex;align-items:center;gap:8px;
+  .fact{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;box-shadow:var(--shadow);
   }
-  .chip b{color:var(--accent-2);font-weight:600;}
-  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
+  .fact .lbl{
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+    display:block;margin-bottom:6px;
+  }
+  .fact .val{font-family:'Sora',sans-serif;font-weight:600;font-size:16.5px;color:var(--ink);display:block;line-height:1.3;}
+  .fact .note{font-size:13.5px;color:var(--ink-soft);display:block;margin-top:5px;line-height:1.45;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;justify-content:center;}
   .btn{
     font-family:'Sora',sans-serif;font-weight:600;font-size:15px;
     padding:12px 22px;border-radius:10px;border:1.5px solid var(--ink);
@@ -108,31 +106,66 @@
   .btn-primary:hover{background:#1d4fa3;border-color:#1d4fa3;color:#fff;text-decoration:none;}
   .btn-ghost{background:transparent;color:var(--ink);}
   .btn-ghost:hover{background:var(--ink);color:var(--paper);text-decoration:none;}
+  .btn .icon{width:19px;height:19px;flex:none;}
+  /* link target not yet announced — reads as a placeholder until an href is added */
+  .btn[aria-disabled="true"]{opacity:.55;cursor:default;}
+  .btn[aria-disabled="true"]:hover{background:transparent;color:var(--ink);}
 
   /* ---------- section frame ---------- */
   section{max-width:var(--maxw);margin:0 auto;padding:56px 24px;border-top:1px solid var(--line);}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px;}
+  /* every block inside a section shares the prose column, so sub-heads, lists,
+     grids and tables all start on the same left edge as the body text */
+  section > *{max-width:var(--prose);margin-left:auto;margin-right:auto;}
+  /* Sized to the prose column and shifted left by exactly the number gutter
+     (18px + 14px gap), so the TITLE — not the number — sits on the paragraph's
+     left edge. The shift collapses to 0 once the viewport is too narrow to
+     hang the number in the margin. */
+  .sec-head{
+    display:flex;align-items:baseline;gap:14px;
+    width:min(100%,var(--prose));margin:0 auto 30px;
+    position:relative;
+    left:calc(-1 * min(32px, max(0px, (100% - var(--prose)) / 2)));
+  }
   .sec-num{
-    font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;
     color:var(--accent);letter-spacing:.05em;
+    flex:0 0 18px;
   }
-  .sec-head h2{font-size:clamp(26px,3.6vw,38px);font-weight:700;letter-spacing:-.015em;margin:0;}
-  .lead{font-size:18px;color:var(--ink-soft);max-width:74ch;}
+  .sec-head h2{font-size:clamp(23px,3vw,32px);font-weight:700;letter-spacing:-.015em;margin:0;}
+  /* body prose sits in a centered column; text itself stays flush left */
+  .lead{font-size:18px;color:var(--ink-soft);max-width:var(--prose);margin-left:auto;margin-right:auto;}
+  .prose{max-width:var(--prose);margin-left:auto;margin-right:auto;}
   p{margin:0 0 16px;}
+  .sub-head{
+    font-family:'Sora',sans-serif;font-size:21px;font-weight:600;
+    letter-spacing:-.01em;color:var(--ink);line-height:1.2;
+    margin:40px auto 18px;
+    text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px;
+    text-decoration-color:var(--line);
+  }
 
-  /* ---------- areas of interest ---------- */
-  .q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:28px;}
-  .q-card{
-    background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
-    padding:22px 22px 20px;box-shadow:var(--shadow);transition:.18s;
+  /* ---------- callout ---------- */
+  .callout{
+    border-left:3px solid var(--accent);background:var(--accent-soft);
+    border-radius:0 12px 12px 0;padding:18px 22px;margin:26px auto 0;max-width:var(--prose);
   }
-  .q-card:hover{transform:translateY(-3px);border-color:var(--accent);}
-  .q-card .qn{
-    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--accent-2);
-    display:inline-block;margin-bottom:10px;
+  .callout .k{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px;
   }
-  .q-card h4{font-size:18px;margin:0 0 8px;font-weight:600;}
-  .q-card p{font-size:15px;color:var(--ink-soft);margin:0;line-height:1.55;}
+  .callout p{margin:0;font-size:16.5px;}
+
+  /* ---------- topics list ---------- */
+  /* bullet sits on the prose edge, in line with the sub-head above it;
+     text is indented and wrapped lines hang to that same indent */
+  .topic-list{list-style:none;padding-left:0;margin:0 auto;max-width:var(--prose);}
+  .topic-list li{
+    position:relative;padding-left:26px;
+    margin-bottom:16px;font-size:16.5px;line-height:1.7;color:var(--ink);
+  }
+  .topic-list li:last-child{margin-bottom:0;}
+  .topic-list li::before{content:"•";position:absolute;left:3px;top:0;color:var(--ink-soft);}
+  .topic-list li b{font-weight:700;}
 
   /* ---------- schedule ---------- */
   .sched{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper-2);box-shadow:var(--shadow);}
@@ -150,10 +183,16 @@
     text-transform:uppercase;color:var(--accent);font-weight:600;
     display:block;margin-bottom:2px;
   }
-  .sched-note{font-size:14px;color:var(--ink-soft);margin-top:18px;font-style:italic;}
+  .sched-note{font-size:14px;color:var(--ink-soft);margin-top:18px;font-style:italic;text-align:center;}
 
-  /* ---------- speakers ---------- */
+  /* ---------- people ---------- */
   .ppl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;margin-top:8px;}
+  /* people grids opt out of the prose column and use the full section width */
+  section > .ppl-grid{max-width:none;}
+  /* the four invited speakers stay on a single row */
+  #speakers .ppl-grid{grid-template-columns:repeat(4,1fr);}
+  @media(max-width:860px){#speakers .ppl-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){#speakers .ppl-grid{grid-template-columns:1fr;}}
   .ppl{
     background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
     padding:22px;text-align:left;box-shadow:var(--shadow);transition:.18s;
@@ -174,38 +213,49 @@
   }
   .ppl .bio{font-size:13.5px;color:var(--ink-soft);margin-top:10px;line-height:1.5;}
 
-  /* ---------- papers / CFP ---------- */
+  /* ---------- call for papers ---------- */
   .cfp-box{
-    background:var(--ink);color:var(--paper);border-radius:16px;padding:32px;
-    margin-bottom:26px;
+    background:var(--ink);color:var(--paper);border-radius:16px;padding:30px 32px;
+    margin-top:20px;
   }
-  .cfp-box h3{color:#fff;font-size:22px;margin:0 0 14px;}
+  .cfp-box h3{color:#fff;font-size:21px;margin:0 0 12px;}
   .cfp-box p{color:#d3ddea;margin:0 0 12px;}
-  .cfp-box ul{margin:0;padding-left:20px;color:#d3ddea;}
-  .cfp-box li{margin-bottom:7px;}
+  .cfp-box p:last-child{margin-bottom:0;}
   .cfp-box a{color:#9dc1f5;}
-  .cfp-dates{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
-  .cfp-date{
-    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
-    border-radius:10px;padding:12px 16px;
+  .track-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px;}
+  .track{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;box-shadow:var(--shadow);
   }
-  .cfp-date .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;
-    letter-spacing:.06em;color:#9dc1f5;}
-  .cfp-date .val{font-family:'Sora',sans-serif;font-weight:600;font-size:16px;color:#fff;margin-top:2px;}
+  .track .tag{
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);
+    border-radius:999px;padding:4px 11px;display:inline-block;margin-bottom:11px;
+  }
+  .track:nth-child(2) .tag{background:var(--accent-2);}
+  .track h4{font-size:17.5px;margin:0 0 7px;font-weight:600;}
+  .track p{font-size:15px;color:var(--ink-soft);margin:0 0 10px;line-height:1.55;}
+  .track .len{
+    font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent-2);font-weight:600;
+  }
 
-  /* ---------- challenges list ---------- */
-  .ch-list{counter-reset:ch;display:grid;gap:14px;}
-  .ch-item{
-    display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;
-    background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+  .dates-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:var(--paper-2);box-shadow:var(--shadow);}
+  table.dates{width:100%;border-collapse:collapse;}
+  table.dates th{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    text-align:left;padding:13px 20px;background:var(--accent-soft);
+    border-bottom:1px solid var(--line);
   }
-  .ch-item .n{
-    font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--accent);
-    width:48px;height:48px;border-radius:10px;background:var(--accent-soft);
-    display:flex;align-items:center;justify-content:center;
+  table.dates td{padding:14px 20px;border-bottom:1px solid var(--line);font-size:16px;}
+  table.dates tr:last-child td{border-bottom:none;}
+  table.dates td.dt{
+    font-family:'JetBrains Mono',monospace;font-size:14.5px;font-weight:500;color:var(--accent-2);
+    white-space:nowrap;
   }
-  .ch-item h4{font-size:17px;margin:0 0 5px;font-weight:600;}
-  .ch-item p{font-size:14.5px;color:var(--ink-soft);margin:0;line-height:1.55;}
+  table.dates tr.hl td{background:var(--teal-soft);font-weight:600;}
+  .dates-note{font-size:14px;color:var(--ink-soft);margin-top:14px;font-style:italic;text-align:center;}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--line);background:var(--paper-2);}
@@ -228,6 +278,8 @@
     .sched-row{grid-template-columns:1fr;}
     .sched-row .t{background:var(--teal-soft);}
     header.hero{padding:52px 24px 40px;}
+    .dates-wrap{overflow-x:auto;}
+    .cfp-box{padding:24px 22px;}
   }
 </style>
 </head>
@@ -235,88 +287,70 @@
 
 <nav>
   <div class="nav-inner">
-    <div class="brand"><span class="dot"></span>Action&nbsp;Gap&nbsp;·&nbsp;CoRL&nbsp;2026</div>
+    <div class="brand"><span class="dot"></span>CoRL&nbsp;2026&nbsp;G2A</div>
     <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
     <div class="nav-links" id="nl">
-      <a href="#overview">Overview</a>
-      <a href="#challenges">Challenges</a>
-      <a href="#schedule">Schedule</a>
+      <a href="#about">About</a>
       <a href="#speakers">Speakers</a>
       <a href="#papers">Call for Papers</a>
+      <a href="#schedule">Schedule</a>
       <a href="#committee">Organizers</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="eyebrow">CoRL 2026 · Workshop Proposal</div>
-  <h1>Bridging the <span class="gap">Action Gap</span></h1>
-  <p class="sub">Pretrained generative models for robot policy learning — connecting what video, image, and 3D models know about the world to the actions a robot must take in it.</p>
-  <div class="meta-row">
-    <span class="chip">📍 <b>CoRL 2026</b></span>
-    <span class="chip">🕗 <b>Half-day</b> · Morning session</span>
-    <span class="chip">📝 Submissions via <b>OpenReview</b></span>
-    <span class="chip">🤝 Sponsored by <b>Lambda</b></span>
+  <h1><span class="g2a">G2A</span>: From Generative Models to Robot Actions</h1>
+  <p class="sub">Workshop at CoRL 2026</p>
+
+  <div class="hero-facts">
+    <div class="fact">
+      <span class="lbl">Date</span>
+      <span class="val">Thursday, November&nbsp;12, 2026</span>
+      <span class="note">CoRL 2026 workshop day</span>
+    </div>
+    <div class="fact">
+      <span class="lbl">Time</span>
+      <span class="val">08:30 – 12:30 CST</span>
+      <span class="note">Half-day · morning session</span>
+    </div>
+    <div class="fact">
+      <span class="lbl">Location</span>
+      <span class="val">Austin, Texas, USA</span>
+      <span class="note">Room assignment to be announced</span>
+    </div>
   </div>
+
   <div class="cta-row">
-    <a href="#papers" class="btn btn-primary">Call for Papers →</a>
-    <a href="#overview" class="btn btn-ghost">Read the overview</a>
+    <a href="#papers" class="btn btn-primary">Call for Papers</a>
+    <a class="btn btn-ghost" aria-disabled="true" title="Submission portal to be announced">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3.2 4 8v8l8 4.8 8-4.8V8z"></path>
+        <path d="M12 3.2v17.6"></path>
+        <path d="M4 8l8 4.6L20 8"></path>
+      </svg>
+      OpenReview
+    </a>
   </div>
 </header>
 
-<!-- OVERVIEW -->
-<section id="overview">
-  <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
   <p class="lead">Large-scale generative models pretrained on video, image, and 3D data learn rich representations of objects, spatial structure, physical interactions, and how the visual world changes over time. These models are a promising source of prior knowledge for robot learning, especially because large-scale robot data remains expensive to collect and limited in diversity.</p>
-  <p style="max-width:74ch;margin-top:18px;">However, most pretraining data contains no robot action labels, while a policy must ultimately produce executable actions that respect the embodiment, dynamics, and sensing constraints of a physical system. This mismatch creates what we call the <b>action gap</b> between generative pretraining and robot policy learning.</p>
-  <p style="max-width:74ch;">A video model can predict how a scene should change, and a 3D generative model can capture the geometry of an environment — but neither directly specifies which robot actions will reliably produce the desired change. This workshop places the interface between generative models and robot policies at the center, asking how models trained to represent or generate changes in the world can help robots learn the actions that cause those changes.</p>
+  <p class="prose" style="margin-top:18px;">However, most pretraining data contains no robot action labels, while a policy must ultimately produce executable actions that respect the embodiment, dynamics, and sensing constraints of a physical system. This mismatch creates an <b>action gap</b> between generative pretraining and robot policy learning.</p>
+  <p class="prose">A video model can predict how a scene should change, and a 3D generative model can capture the geometry of an environment — but neither directly specifies which robot actions will reliably produce the desired change. <b>G2A</b> places the interface between generative models and robot policies at the center, asking how models trained to represent or generate changes in the world can help robots learn the actions that cause those changes.</p>
 
-  <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-top:26px;margin-bottom:14px;">Topics of interest</p>
-  <div class="q-grid">
-    <div class="q-card"><span class="qn">↳ representation</span><h4>Latent action learning</h4><p>Inverse dynamics and action-conditioned generation that link visual change to control.</p></div>
-    <div class="q-card"><span class="qn">↳ structure</span><h4>Object &amp; interaction-centric models</h4><p>Representations centered on objects, contact, and interaction rather than raw pixels.</p></div>
-    <div class="q-card"><span class="qn">↳ prediction</span><h4>World &amp; action models</h4><p>Predictive models of dynamics turned into signals for planning and control.</p></div>
-    <div class="q-card"><span class="qn">↳ transfer</span><h4>Cross-embodiment transfer</h4><p>Grounding disembodied knowledge across robots with different kinematics and sensing.</p></div>
-    <div class="q-card"><span class="qn">↳ data</span><h4>Heterogeneous data sources</h4><p>Policy learning from human video, simulation, and robot demonstrations together.</p></div>
-    <div class="q-card"><span class="qn">↳ evaluation</span><h4>Evaluating the transfer</h4><p>Feasibility, controllability, robot-data efficiency, robustness, and inference cost.</p></div>
+  <div class="callout">
+    <span class="k">Central question</span>
+    <p>How can knowledge learned from large-scale video, image, and 3D data collected <i>without</i> robot action labels be converted into executable robot policies?</p>
   </div>
-</section>
-
-<!-- CHALLENGES -->
-<section id="challenges">
-  <div class="sec-head"><span class="sec-num">02</span><h2>Core Challenges</h2></div>
-  <p class="lead"><b>Central question:</b> How can knowledge learned from large-scale video, image, and 3D data collected <i>without</i> robot action labels be converted into executable robot policies? The workshop addresses this through five concrete open challenges.</p>
-  <div class="ch-list" style="margin-top:28px;">
-    <div class="ch-item"><div class="n">1</div><div><h4>The right intermediate abstraction</h4><p>What action-relevant representations can be learned from action-free data? Should visual change connect to control through latent actions, object motion, contact states, task-space trajectories, or something else — and how do these trade off?</p></div></div>
-    <div class="ch-item"><div class="n">2</div><div><h4>Grounding in embodiment</h4><p>How can representations be grounded in the kinematic, dynamic, and sensing constraints of different embodiments, so what is learned from disembodied data stays physically realizable?</p></div></div>
-    <div class="ch-item"><div class="n">3</div><div><h4>How much robot supervision is needed?</h4><p>How much paired robot data is necessary to bridge the gap? Which forms of supervision give the greatest value per unit of collection cost? Is action-free or action-light policy learning the realistic objective?</p></div></div>
-    <div class="ch-item"><div class="n">4</div><div><h4>From open-loop generation to closed-loop control</h4><p>How can models trained for open-loop visual or 3D generation become policies capable of closed-loop execution, correction, and recovery when predictions diverge from real observations?</p></div></div>
-    <div class="ch-item"><div class="n">5</div><div><h4>How should transfer be evaluated?</h4><p>What criteria fit — action feasibility, controllability, data efficiency, task success, generalization, robustness to distribution shift, inference cost — and how should the trade-offs among them be assessed?</p></div></div>
-  </div>
-</section>
-
-<!-- SCHEDULE -->
-<section id="schedule">
-  <div class="sec-head"><span class="sec-num">03</span><h2>Schedule</h2></div>
-  <p class="lead">An interactive half-day event rather than a sequence of talks. Invited talks act as focused inputs for the breakout problem-solving sessions that follow.</p>
-  <div class="sched" style="margin-top:26px;">
-    <div class="sched-row"><div class="t">08:30 – 08:45</div><div class="d"><span class="sched-tag">Framing</span><b>Opening framing</b></div></div>
-    <div class="sched-row"><div class="t">08:45 – 09:10</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 1</b></div></div>
-    <div class="sched-row"><div class="t">09:15 – 09:40</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 2</b></div></div>
-    <div class="sched-row"><div class="t">09:40 – 10:00</div><div class="d"><span class="sched-tag">Interactive</span><b>Breakout problem-solving · part 1</b></div></div>
-    <div class="sched-row"><div class="t">10:00 – 10:30</div><div class="d"><span class="sched-tag">Discussion</span><b>Benchmark / evaluation discussion</b></div></div>
-    <div class="sched-row"><div class="t">10:30 – 11:00</div><div class="d"><span class="sched-tag">Break</span><b>Coffee break &amp; poster session</b></div></div>
-    <div class="sched-row"><div class="t">11:00 – 11:25</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 3</b></div></div>
-    <div class="sched-row"><div class="t">11:30 – 11:55</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 4</b></div></div>
-    <div class="sched-row"><div class="t">11:55 – 12:15</div><div class="d"><span class="sched-tag">Interactive</span><b>Breakout problem-solving · part 2</b></div></div>
-    <div class="sched-row"><div class="t">12:15 – 12:30</div><div class="d"><span class="sched-tag">Synthesis</span><b>Report-back and synthesis</b></div></div>
-  </div>
-  <p class="sched-note">Tentative morning schedule. Times subject to change as the program is finalized.</p>
 </section>
 
 <!-- SPEAKERS -->
 <section id="speakers">
-  <div class="sec-head"><span class="sec-num">04</span><h2>Invited Speakers</h2></div>
+  <div class="sec-head"><span class="sec-num">02</span><h2>Invited Speakers</h2></div>
   <p class="lead">Leading researchers across generative world models, robot policy learning, embodiment grounding, human-video learning, and evaluation.</p>
   <div class="ppl-grid" style="margin-top:26px;">
     <div class="ppl">
@@ -350,32 +384,97 @@
   </div>
 </section>
 
-<!-- PAPERS / CFP -->
+<!-- CALL FOR PAPERS -->
 <section id="papers">
-  <div class="sec-head"><span class="sec-num">05</span><h2>Call for Papers</h2></div>
-  <div class="cfp-box">
-    <h3>Submit your work</h3>
-    <p>We solicit extended abstracts and short papers of up to <b>four pages</b> through OpenReview. Submissions are <b>non-archival</b>. We welcome new, preliminary, and in-progress work — including negative results, empirical comparisons, and evaluation methodologies.</p>
-    <ul>
-      <li>Each submission receives at least two reviews from organizers and an invited program committee.</li>
-      <li>Submissions are assessed on relevance to the workshop challenges and potential to stimulate discussion.</li>
-      <li>All accepted papers are presented as posters and integrated into the breakout sessions.</li>
-      <li>A <b>Best Paper Award</b> and possible Honorable Mentions recognize strong contributions.</li>
-      <li>Per the Call for Workshops, papers already accepted to the CoRL 2026 main conference are not eligible.</li>
-    </ul>
-    <div class="cfp-dates">
-      <div class="cfp-date"><div class="lbl">Format</div><div class="val">≤ 4 pages</div></div>
-      <div class="cfp-date"><div class="lbl">Venue</div><div class="val">OpenReview</div></div>
-      <div class="cfp-date"><div class="lbl">Archival</div><div class="val">Non-archival</div></div>
-      <div class="cfp-date"><div class="lbl">Presentation</div><div class="val">Poster</div></div>
+  <div class="sec-head"><span class="sec-num">03</span><h2>Call for Papers</h2></div>
+  <p class="lead">We invite submissions on any aspect of turning pretrained generative models into robot policies. We welcome new, preliminary, and in-progress work — including negative results, empirical comparisons, position papers, benchmarks, and evaluation methodologies.</p>
+
+  <h3 class="sub-head">Topics of interest</h3>
+  <ul class="topic-list">
+    <li><b>Latent action learning.</b> Inverse dynamics, action-conditioned generation, and latent action spaces learned from action-free video that link visual change to control.</li>
+    <li><b>Object- and interaction-centric models.</b> Representations centered on objects, contact, affordances, and interaction rather than raw pixels, and how they expose actionable structure.</li>
+    <li><b>World and action models.</b> Predictive models of dynamics turned into signals for planning, model-predictive control, and policy learning.</li>
+    <li><b>Cross-embodiment transfer.</b> Grounding disembodied knowledge in the kinematic, dynamic, and sensing constraints of robots so that what is learned stays physically realizable.</li>
+    <li><b>Heterogeneous data sources.</b> Policy learning that combines human video, simulation, and robot demonstrations, including alignment and curation across sources.</li>
+    <li><b>From open-loop generation to closed-loop control.</b> Turning generative rollouts into policies capable of execution, correction, and recovery when predictions diverge from real observations.</li>
+    <li><b>Robot data efficiency.</b> Action-free and action-light policy learning, and which forms of supervision give the greatest value per unit of collection cost.</li>
+    <li><b>Evaluation.</b> Benchmarks and protocols measuring action feasibility, controllability, robot-data efficiency, generalization, robustness to distribution shift, and inference cost.</li>
+  </ul>
+
+  <h3 class="sub-head">Submission tracks</h3>
+  <div class="track-grid">
+    <div class="track">
+      <span class="tag">Track 1</span>
+      <h4>Research papers</h4>
+      <p>Novel methods, empirical studies, algorithmic advances, benchmarks, datasets, or system demonstrations that bridge generative pretraining and robot action.</p>
+      <span class="len">4–9 pages + references</span>
+    </div>
+    <div class="track">
+      <span class="tag">Track 2</span>
+      <h4>Position &amp; negative-result papers</h4>
+      <p>Opinionated positions on the right abstractions or evaluation criteria, reproducibility studies, and rigorous negative results that the community should know about.</p>
+      <span class="len">4–9 pages + references</span>
     </div>
   </div>
-  <p class="lead">The call will be distributed through the workshop website, relevant mailing lists, social media, and the networks of the organizers and speakers. We especially encourage submissions from junior researchers, underrepresented groups, and institutions across different geographic regions.</p>
+
+  <h3 class="sub-head">Submission guidelines</h3>
+  <p class="prose">Submissions should follow the <a href="https://www.corl.org/" target="_blank" rel="noopener">CoRL 2026 LaTeX template</a> and be between 4 and 9 pages, excluding references and appendices. All papers must be submitted as anonymized PDFs for double-blind review via <a href="#papers">OpenReview</a> (submission portal to be announced), with author names, affiliations, and acknowledgments removed and prior work cited in the third person.</p>
+
+  <p class="prose">Accepted papers will be featured in a poster session, with a small number selected for oral presentation. Proceedings are non-archival, allowing future conference or journal submissions; work under review at or accepted by other venues is welcome, though CoRL 2026 main-conference papers are not eligible.</p>
+
+  <h3 class="sub-head">Important dates</h3>
+  <div class="dates-wrap">
+    <table class="dates">
+      <thead>
+        <tr><th>Milestone</th><th>Date (AoE)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Submission deadline</td><td class="dt">October 8, 2026</td></tr>
+        <tr><td>Acceptance notification</td><td class="dt">October 29, 2026</td></tr>
+        <tr><td>Camera-ready due</td><td class="dt">November 5, 2026</td></tr>
+        <tr class="hl"><td>Workshop day</td><td class="dt">November 12, 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="dates-note">All deadlines are 11:59 PM Anywhere on Earth. Dates are tentative until the OpenReview portal opens.</p>
+
+  <h3 class="sub-head">Awards</h3>
+  <p class="prose">Thanks to the generous sponsorship of <b>Lambda</b>, the workshop will present:</p>
+  <ul class="topic-list">
+    <li><b>Best Paper Award:</b> $3,000 in compute credits, selected from all accepted papers across both tracks and announced during the closing synthesis.</li>
+    <li><b>Oral Paper Awards:</b> $1,500 in compute credits each, for a small number of accepted papers selected for oral presentation at the workshop, chosen on review scores and breadth of interest to the audience.</li>
+    <li><b>All other accepted papers:</b> $400 in compute credits.</li>
+  </ul>
+
+  <div class="cfp-box">
+    <h3>Spread the word</h3>
+    <p>The call is distributed through this website, relevant mailing lists, social media, and the networks of the organizers and speakers. We especially encourage submissions from junior researchers, underrepresented groups, and institutions across different geographic regions.</p>
+    <p>Questions about the call? Contact <a href="mailto:xu.xinyi5@northeastern.edu">xu.xinyi5@northeastern.edu</a>.</p>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Schedule</h2></div>
+  <p class="lead">An interactive half-day event rather than a sequence of talks. Invited talks act as focused inputs for the breakout problem-solving sessions that follow.</p>
+  <div class="sched" style="margin-top:26px;">
+    <div class="sched-row"><div class="t">08:30 – 08:45</div><div class="d"><span class="sched-tag">Framing</span><b>Opening framing</b></div></div>
+    <div class="sched-row"><div class="t">08:45 – 09:10</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 1</b></div></div>
+    <div class="sched-row"><div class="t">09:15 – 09:40</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 2</b></div></div>
+    <div class="sched-row"><div class="t">09:40 – 10:00</div><div class="d"><span class="sched-tag">Interactive</span><b>Breakout problem-solving · part 1</b></div></div>
+    <div class="sched-row"><div class="t">10:00 – 10:30</div><div class="d"><span class="sched-tag">Discussion</span><b>Benchmark / evaluation discussion</b></div></div>
+    <div class="sched-row"><div class="t">10:30 – 11:00</div><div class="d"><span class="sched-tag">Break</span><b>Coffee break &amp; poster session</b></div></div>
+    <div class="sched-row"><div class="t">11:00 – 11:25</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 3</b></div></div>
+    <div class="sched-row"><div class="t">11:30 – 11:55</div><div class="d"><span class="sched-tag">Talk</span><b>Invited talk 4</b></div></div>
+    <div class="sched-row"><div class="t">11:55 – 12:15</div><div class="d"><span class="sched-tag">Interactive</span><b>Breakout problem-solving · part 2</b></div></div>
+    <div class="sched-row"><div class="t">12:15 – 12:30</div><div class="d"><span class="sched-tag">Synthesis</span><b>Report-back and synthesis</b></div></div>
+  </div>
+  <p class="sched-note">Tentative morning schedule. Times subject to change as the program is finalized.</p>
 </section>
 
 <!-- COMMITTEE -->
 <section id="committee">
-  <div class="sec-head"><span class="sec-num">06</span><h2>Organizers</h2></div>
+  <div class="sec-head"><span class="sec-num">05</span><h2>Organizers</h2></div>
   <div class="ppl-grid">
     <div class="ppl"><div class="ph">XX</div><h4>Xinyi Xu</h4><div class="aff">Northeastern University</div><div class="role">Undergraduate</div></div>
     <div class="ppl"><div class="ph">YQ</div><h4>Yu Qi</h4><div class="aff">Northeastern University</div><div class="role">PhD Student</div></div>
@@ -396,7 +495,7 @@
 
 <footer>
   <div class="foot-inner">
-    <div class="brand"><span class="dot"></span>Bridging the Action Gap · CoRL 2026</div>
+    <div class="brand"><span class="dot"></span>G2A · CoRL 2026 · Austin, TX</div>
     <div class="sponsor">Sponsored by <b>Lambda</b></div>
     <p>Contact: xu.xinyi5@northeastern.edu</p>
   </div>
