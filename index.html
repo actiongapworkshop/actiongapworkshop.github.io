@@ -107,9 +107,6 @@
   .btn-ghost{background:transparent;color:var(--ink);}
   .btn-ghost:hover{background:var(--ink);color:var(--paper);text-decoration:none;}
   .btn .icon{width:19px;height:19px;flex:none;}
-  /* link target not yet announced — reads as a placeholder until an href is added */
-  .btn[aria-disabled="true"]{opacity:.55;cursor:default;}
-  .btn[aria-disabled="true"]:hover{background:transparent;color:var(--ink);}
 
   /* ---------- section frame ---------- */
   section{max-width:var(--maxw);margin:0 auto;padding:56px 24px;border-top:1px solid var(--line);}
@@ -185,33 +182,34 @@
   }
   .sched-note{font-size:14px;color:var(--ink-soft);margin-top:18px;font-style:italic;text-align:center;}
 
-  /* ---------- people ---------- */
-  .ppl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;margin-top:8px;}
-  /* people grids opt out of the prose column and use the full section width */
-  section > .ppl-grid{max-width:none;}
-  /* the four invited speakers stay on a single row */
-  #speakers .ppl-grid{grid-template-columns:repeat(4,1fr);}
-  @media(max-width:860px){#speakers .ppl-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:520px){#speakers .ppl-grid{grid-template-columns:1fr;}}
-  .ppl{
-    background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
-    padding:22px;text-align:left;box-shadow:var(--shadow);transition:.18s;
-  }
-  .ppl:hover{transform:translateY(-3px);border-color:var(--accent-2);}
-  .ppl .ph{
-    width:64px;height:64px;border-radius:14px;margin-bottom:14px;
+  /* ---------- organizers ---------- */
+  /* same figure treatment as speakers, 5 across since there are fourteen */
+  .org-grid{grid-template-columns:repeat(5,1fr);gap:32px 20px;}
+  @media(max-width:960px){.org-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:640px){.org-grid{grid-template-columns:repeat(2,1fr);}}
+  /* stand-in for the few organizers whose photo we do not have yet */
+  .ph-fallback{
+    width:156px;height:156px;border-radius:50%;margin:0 auto 16px;
     display:flex;align-items:center;justify-content:center;
-    font-family:'Sora',sans-serif;font-weight:700;font-size:24px;color:#fff;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:40px;color:#fff;
     background:linear-gradient(135deg,var(--accent),#5b8de8);
   }
-  .ppl:nth-child(even) .ph{background:linear-gradient(135deg,var(--accent-2),#3ba6c2);}
-  .ppl h4{font-size:18px;margin:0 0 3px;font-weight:600;}
-  .ppl .aff{font-size:14px;color:var(--ink-soft);line-height:1.4;}
-  .ppl .role{
-    font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;
-    letter-spacing:.05em;color:var(--accent);font-weight:600;margin-top:9px;
+  .spk:nth-child(even) .ph-fallback{background:linear-gradient(135deg,var(--accent-2),#3ba6c2);}
+  /* ---------- invited speakers ---------- */
+  .spk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 24px;margin-top:10px;}
+  section > .spk-grid{max-width:none;}
+  @media(max-width:860px){.spk-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:460px){.spk-grid{grid-template-columns:1fr;}}
+  .spk{margin:0;text-align:center;}
+  .spk img{
+    width:156px;height:156px;border-radius:50%;object-fit:cover;
+    display:block;margin:0 auto 16px;background:var(--paper-2);
   }
-  .ppl .bio{font-size:13.5px;color:var(--ink-soft);margin-top:10px;line-height:1.5;}
+  .spk .nm{
+    display:block;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;
+    color:var(--ink);letter-spacing:-.01em;margin-bottom:4px;
+  }
+  .spk .aff{display:block;font-size:15px;color:var(--ink-soft);line-height:1.4;}
 
   /* ---------- call for papers ---------- */
   .cfp-box{
@@ -323,7 +321,7 @@
 
   <div class="cta-row">
     <a href="#papers" class="btn btn-primary">Call for Papers</a>
-    <a class="btn btn-ghost" aria-disabled="true" title="Submission portal to be announced">
+    <a class="btn btn-ghost" href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/TAG" target="_blank" rel="noopener">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 3.2 4 8v8l8 4.8 8-4.8V8z"></path>
@@ -352,35 +350,23 @@
 <section id="speakers">
   <div class="sec-head"><span class="sec-num">02</span><h2>Invited Speakers</h2></div>
   <p class="lead">Leading researchers across generative world models, robot policy learning, embodiment grounding, human-video learning, and evaluation.</p>
-  <div class="ppl-grid" style="margin-top:26px;">
-    <div class="ppl">
-      <div class="ph">YD</div>
-      <h4>Yilun Du</h4>
-      <div class="aff">Harvard University · Kempner Institute</div>
-      <div class="role">Committed · in person</div>
-      <div class="bio">Generative models for embodied decision-making — energy-based models, diffusion, compositional world models, and planning.</div>
-    </div>
-    <div class="ppl">
-      <div class="ph">FH</div>
-      <h4>Furong Huang</h4>
-      <div class="aff">University of Maryland</div>
-      <div class="role">Committed · in person</div>
-      <div class="bio">Foundation models as decision-making systems — robust RL, reasoning under uncertainty, and trustworthy self-improvement.</div>
-    </div>
-    <div class="ppl">
-      <div class="ph">AB</div>
-      <h4>Amir Bar</h4>
-      <div class="aff">Imperial College London · AMI Labs</div>
-      <div class="role">Committed · in person</div>
-      <div class="bio">Learning to perceive, reason, and act from visual data — world models, video prediction, planning, and visuomotor control.</div>
-    </div>
-    <div class="ppl">
-      <div class="ph">QR</div>
-      <h4>Qwen Robotics Team</h4>
-      <div class="aff">Alibaba, Inc.</div>
-      <div class="role">Committed · in person</div>
-      <div class="bio">Industrial-scale view on extending multimodal foundation models toward embodied intelligence — world modeling and manipulation.</div>
-    </div>
+  <div class="spk-grid">
+    <figure class="spk">
+      <img src="assets/speakers/yilun-du.jpg" alt="Yilun Du" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Yilun Du</span><span class="aff">Harvard University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/speakers/furong-huang.jpg" alt="Furong Huang" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Furong Huang</span><span class="aff">University of Maryland</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/speakers/amir-bar.jpg" alt="Amir Bar" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Amir Bar</span><span class="aff">Imperial College London</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/speakers/qwen.png" alt="Qwen" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Qwen Robotics Team</span><span class="aff">Alibaba</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -418,7 +404,7 @@
   </div>
 
   <h3 class="sub-head">Submission guidelines</h3>
-  <p class="prose">Submissions should follow the <a href="https://www.corl.org/" target="_blank" rel="noopener">CoRL 2026 LaTeX template</a> and be between 4 and 9 pages, excluding references and appendices. All papers must be submitted as anonymized PDFs for double-blind review via <a href="#papers">OpenReview</a> (submission portal to be announced), with author names, affiliations, and acknowledgments removed and prior work cited in the third person.</p>
+  <p class="prose">Submissions should follow the <a href="https://www.corl.org/" target="_blank" rel="noopener">CoRL 2026 LaTeX template</a> and be between 4 and 9 pages, excluding references and appendices. All papers must be submitted as anonymized PDFs for double-blind review via <a href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/TAG" target="_blank" rel="noopener">OpenReview</a>, with author names, affiliations, and acknowledgments removed and prior work cited in the third person.</p>
 
   <p class="prose">Accepted papers will be featured in a poster session, with a small number selected for oral presentation. Proceedings are non-archival, allowing future conference or journal submissions; work under review at or accepted by other venues is welcome, though CoRL 2026 main-conference papers are not eligible.</p>
 
@@ -436,7 +422,7 @@
       </tbody>
     </table>
   </div>
-  <p class="dates-note">All deadlines are 11:59 PM Anywhere on Earth. Dates are tentative until the OpenReview portal opens.</p>
+  <p class="dates-note">All deadlines are 11:59 PM Anywhere on Earth.</p>
 
   <h3 class="sub-head">Awards</h3>
   <p class="prose">Thanks to the generous sponsorship of <b>Lambda</b>, the workshop will present:</p>
@@ -475,21 +461,63 @@
 <!-- COMMITTEE -->
 <section id="committee">
   <div class="sec-head"><span class="sec-num">05</span><h2>Organizers</h2></div>
-  <div class="ppl-grid">
-    <div class="ppl"><div class="ph">XX</div><h4>Xinyi Xu</h4><div class="aff">Northeastern University</div><div class="role">Undergraduate</div></div>
-    <div class="ppl"><div class="ph">YQ</div><h4>Yu Qi</h4><div class="aff">Northeastern University</div><div class="role">PhD Student</div></div>
-    <div class="ppl"><div class="ph">YY</div><h4>Yifan Yin</h4><div class="aff">Johns Hopkins University</div><div class="role">PhD Student</div></div>
-    <div class="ppl"><div class="ph">KZ</div><h4>Kevin Zhang</h4><div class="aff">Peking University</div><div class="role">PhD Student</div></div>
-    <div class="ppl"><div class="ph">XC</div><h4>Xiaowei Chi</h4><div class="aff">CUHK</div><div class="role">PhD Student</div></div>
-    <div class="ppl"><div class="ph">SM</div><h4>Siyuan Ma</h4><div class="aff">CUHK · Westlake University</div><div class="role">PhD Student</div></div>
-    <div class="ppl"><div class="ph">SW</div><h4>Siyuan Wang</h4><div class="aff">CUHK</div><div class="role">Postdoc Researcher</div></div>
-    <div class="ppl"><div class="ph">LW</div><h4>Lawson Wong</h4><div class="aff">Northeastern University</div><div class="role">Associate Professor</div></div>
-    <div class="ppl"><div class="ph">TS</div><h4>Tianmin Shu</h4><div class="aff">Johns Hopkins University</div><div class="role">Assistant Professor</div></div>
-    <div class="ppl"><div class="ph">JM</div><h4>Jiayuan Mao</h4><div class="aff">UPenn · Amazon</div><div class="role">Assistant Professor</div></div>
-    <div class="ppl"><div class="ph">JT</div><h4>Jonathan Tremblay</h4><div class="aff">NVIDIA, Inc.</div><div class="role">Research Scientist</div></div>
-    <div class="ppl"><div class="ph">VB</div><h4>Valts Blukis</h4><div class="aff">NVIDIA, Inc.</div><div class="role">Research Scientist</div></div>
-    <div class="ppl"><div class="ph">WL</div><h4>Weiyang Liu</h4><div class="aff">CUHK</div><div class="role">Assistant Professor</div></div>
-    <div class="ppl"><div class="ph">JX</div><h4>Jianwen Xie</h4><div class="aff">Lambda, Inc.</div><div class="role">Research Scientist</div></div>
+  <div class="spk-grid org-grid">
+    <figure class="spk">
+      <img src="assets/organizers/xinyi-xu.jpg" alt="Xinyi Xu" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Xinyi Xu</span><span class="aff">Northeastern University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/yu-qi.jpg" alt="Yu Qi" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Yu Qi</span><span class="aff">Northeastern University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/yifan-yin.jpg" alt="Yifan Yin" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Yifan Yin</span><span class="aff">Johns Hopkins University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <div class="ph-fallback">KZ</div>
+      <figcaption><span class="nm">Kevin Zhang</span><span class="aff">Peking University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/xiaowei-chi.jpg" alt="Xiaowei Chi" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Xiaowei Chi</span><span class="aff">CUHK</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <div class="ph-fallback">SM</div>
+      <figcaption><span class="nm">Siyuan Ma</span><span class="aff">CUHK · Westlake University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/siyuan-wang.jpg" alt="Siyuan Wang" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Siyuan Wang</span><span class="aff">CUHK</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/lawson-wong.jpg" alt="Lawson Wong" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Lawson Wong</span><span class="aff">Northeastern University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/tianmin-shu.jpg" alt="Tianmin Shu" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Tianmin Shu</span><span class="aff">Johns Hopkins University</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/jiayuan-mao.jpg" alt="Jiayuan Mao" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Jiayuan Mao</span><span class="aff">UPenn · Amazon</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/jonathan-tremblay.jpg" alt="Jonathan Tremblay" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Jonathan Tremblay</span><span class="aff">NVIDIA</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/valts-blukis.jpg" alt="Valts Blukis" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Valts Blukis</span><span class="aff">NVIDIA</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/weiyang-liu.jpg" alt="Weiyang Liu" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Weiyang Liu</span><span class="aff">CUHK</span></figcaption>
+    </figure>
+    <figure class="spk">
+      <img src="assets/organizers/jianwen-xie.jpg" alt="Jianwen Xie" width="156" height="156" loading="lazy">
+      <figcaption><span class="nm">Jianwen Xie</span><span class="aff">Lambda</span></figcaption>
+    </figure>
   </div>
 </section>
 
