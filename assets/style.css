@@ -266,8 +266,6 @@
     display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;}
   .foot-inner .brand{font-size:13px;}
   .foot-inner p{font-size:14px;color:var(--ink-soft);margin:0;}
-  .credit{font-size:12px;color:var(--ink-soft);opacity:.75;margin:0;}
-  .credit a{color:inherit;text-decoration:underline;}
   .sponsor{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);}
   /* wordmark inherits colour via currentColor on its paths */
   .lambda-logo{width:auto;display:block;}
