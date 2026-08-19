@@ -269,7 +269,7 @@
   .sponsor{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink-soft);}
   /* wordmark inherits colour via currentColor on its paths */
   .lambda-logo{width:auto;display:block;}
-  .sponsor .lambda-logo{height:48px;color:var(--ink);}
+  .sponsor .lambda-logo{height:38px;color:var(--ink);}
   .sponsor a{display:inline-flex;color:var(--ink);text-decoration:none;transition:color .16s;}
   .sponsor a:hover{color:var(--accent);text-decoration:none;}
 
