@@ -388,14 +388,18 @@
 
   <h3 class="sub-head">Topics of interest</h3>
   <ul class="topic-list">
-    <li><b>Latent action learning.</b> Inverse dynamics, action-conditioned generation, and latent action spaces learned from action-free video that link visual change to control.</li>
-    <li><b>Object- and interaction-centric models.</b> Representations centered on objects, contact, affordances, and interaction rather than raw pixels, and how they expose actionable structure.</li>
-    <li><b>World and action models.</b> Predictive models of dynamics turned into signals for planning, model-predictive control, and policy learning.</li>
-    <li><b>Cross-embodiment transfer.</b> Grounding disembodied knowledge in the kinematic, dynamic, and sensing constraints of robots so that what is learned stays physically realizable.</li>
-    <li><b>Heterogeneous data sources.</b> Policy learning that combines human video, simulation, and robot demonstrations, including alignment and curation across sources.</li>
-    <li><b>From open-loop generation to closed-loop control.</b> Turning generative rollouts into policies capable of execution, correction, and recovery when predictions diverge from real observations.</li>
-    <li><b>Robot data efficiency.</b> Action-free and action-light policy learning, and which forms of supervision give the greatest value per unit of collection cost.</li>
-    <li><b>Evaluation.</b> Benchmarks and protocols measuring action feasibility, controllability, robot-data efficiency, generalization, robustness to distribution shift, and inference cost.</li>
+    <li><b>Generative world models for robot learning.</b> Generative models pretrained on video, images, and 3D data that learn representations of objects, spatial structure, physical interactions, and temporal changes, and their use as priors for robot policy learning.</li>
+    <li><b>Vision-language-action models.</b> Vision-language models and action-grounded variants, including VLAs and VLNs, that connect visual and semantic understanding to executable robot actions for navigation, manipulation, and other embodied tasks.</li>
+    <li><b>World action models.</b> Models that couple predictions of future world evolution with robot action generation, providing a direct interface between generative world modeling and executable robot behavior.</li>
+    <li><b>World-to-action grounding.</b> Methods for translating generated future states, trajectories, or observations into executable robot actions, including action inference, inverse dynamics, trajectory optimization, and policy learning.</li>
+    <li><b>Predictive dynamics models.</b> Models that learn how environments evolve under robot actions, including prediction of future states, observations, rewards, and interaction outcomes for model-based policy learning and planning.</li>
+    <li><b>Closed-loop control from generative models.</b> Methods that ground generative predictions into reliable behavior through feedback, replanning, error correction, uncertainty estimation, and recovery from prediction errors.</li>
+    <li><b>Sim-to-real transfer.</b> Methods for transferring generative priors, representations, policies, and predictive models from simulation to physical robots, including adaptation to visual, sensing, embodiment, and dynamics gaps.</li>
+    <li><b>Cross-embodiment grounding.</b> Methods for transferring action knowledge learned from videos, demonstrations, simulations, or other robots across different embodiments while respecting their kinematic, dynamic, and sensing constraints.</li>
+    <li><b>Object- and interaction-centric representations.</b> Representations of objects, geometry, contact, affordances, and interactions that expose actionable structure for connecting generative world models to robot behavior.</li>
+    <li><b>Action supervision from diverse data.</b> Methods for extracting, generating, or acquiring action supervision from large-scale video, image, and 3D data, human demonstrations, simulation, and robot interactions, including action inference, action discovery, human-to-robot retargeting, demonstration synthesis, and scalable data collection.</li>
+    <li><b>Robot data efficiency and knowledge transfer.</b> Methods for leveraging pretrained generative models and diverse data sources to reduce the amount of robot data required for policy learning, including data selection, quality assessment, adaptation, fine-tuning, and transfer of knowledge across tasks, environments, and embodiments.</li>
+    <li><b>Evaluation of the action gap.</b> Benchmarks and evaluation protocols for measuring how well generative models translate world knowledge into executable behavior, including action feasibility, controllability, generalization, robustness, data efficiency, long-horizon consistency, and inference cost.</li>
   </ul>
 
   <h3 class="sub-head">Submission tracks</h3>
