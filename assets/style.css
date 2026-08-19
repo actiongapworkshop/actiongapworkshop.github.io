@@ -264,12 +264,14 @@
   footer{border-top:1px solid var(--line);background:var(--paper-2);}
   .foot-inner{max-width:var(--maxw);margin:0 auto;padding:38px 24px;
     display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;}
-  .foot-inner .brand{font-size:13px;}
-  .foot-inner p{font-size:14px;color:var(--ink-soft);margin:0;}
-  .sponsor{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);}
+  .foot-inner .brand{font-size:15px;}
+  .foot-inner p{font-size:16px;color:var(--ink-soft);margin:0;}
+  .sponsor{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink-soft);}
   /* wordmark inherits colour via currentColor on its paths */
   .lambda-logo{width:auto;display:block;}
-  .sponsor .lambda-logo{height:30px;color:var(--ink);}
+  .sponsor .lambda-logo{height:48px;color:var(--ink);}
+  .sponsor a{display:inline-flex;color:var(--ink);text-decoration:none;transition:color .16s;}
+  .sponsor a:hover{color:var(--accent);text-decoration:none;}
 
   /* ---------- sponsor section ---------- */
   .sponsor-block{text-align:center;margin-top:6px;}
