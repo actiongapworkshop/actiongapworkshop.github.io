@@ -135,7 +135,7 @@
   }
   .sec-head h2{font-size:clamp(23px,3vw,32px);font-weight:700;letter-spacing:-.015em;margin:0;}
   /* body prose sits in a centered column; text itself stays flush left */
-  .lead{font-size:18px;color:var(--ink-soft);max-width:var(--prose);margin-left:auto;margin-right:auto;}
+  .lead{font-size:18px;color:var(--ink);max-width:var(--prose);margin-left:auto;margin-right:auto;}
   .prose{max-width:var(--prose);margin-left:auto;margin-right:auto;}
   p{margin:0 0 16px;}
   .sub-head{
