@@ -14,12 +14,10 @@
     G2A Jenga Challenge | CoRL 2026
   </title>
 
-
   <meta
     name="description"
-    content="G2A Jenga Challenge at CoRL 2026 — an interactive benchmark for evaluating action-conditioned world models and world action models through spatial reasoning, physical forecasting, and robot manipulation."
+    content="G2A Jenga Challenge at CoRL 2026 — an interactive benchmark for evaluating world and action models through spatial reasoning, physical forecasting, and robot manipulation."
   >
-
 
   <link
     rel="preconnect"
@@ -32,12 +30,10 @@
     crossorigin
   >
 
-
   <link
     href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet"
   >
-
 
   <link
     rel="stylesheet"
@@ -57,7 +53,6 @@
 <nav>
 
   <div class="nav-inner">
-
 
     <a
       class="brand"
@@ -79,7 +74,6 @@
 
     </div>
 
-
   </div>
 
 </nav>
@@ -94,7 +88,6 @@
        ========================================================= -->
 
   <header class="hero">
-
 
     <h1>
 
@@ -182,10 +175,10 @@
     <div class="cta-row">
 
 
-      <!-- TODO: replace # with final GitHub URL -->
+      <!-- TODO: Replace with final GitHub repository URL -->
 
       <a
-        href="#"
+        href="#participation"
         class="btn btn-primary"
       >
         Get Started
@@ -216,7 +209,7 @@
 
 
   <!-- =========================================================
-       01 OVERVIEW
+       01 CHALLENGE OVERVIEW
        ========================================================= -->
 
   <section id="overview">
@@ -250,8 +243,8 @@
       Jenga provides a compact but challenging testbed for spatial reasoning,
       physical forecasting, and closed-loop interaction. Before executing an
       action, a capable model should be able to reason about the current tower
-      structure, predict the outcomes of alternative actions, and select actions
-      that accomplish the task without destabilizing the scene.
+      structure, predict the outcomes of alternative actions, and select
+      actions that accomplish the task without destabilizing the scene.
 
     </p>
 
@@ -312,10 +305,10 @@
 
 
   <!-- =========================================================
-       02 BENCHMARK SETUP
+       02 BENCHMARK ENVIRONMENT
        ========================================================= -->
 
-  <section id="setup">
+  <section id="environment">
 
 
     <div class="sec-head">
@@ -325,7 +318,7 @@
       </span>
 
       <h2>
-        Benchmark Setup
+        Benchmark Environment
       </h2>
 
     </div>
@@ -333,9 +326,22 @@
 
     <p class="lead">
 
-      The benchmark is constructed from real Jenga environments and recreated
-      as interactive simulation environments for controlled and repeatable
-      evaluation.
+      The G2A Jenga benchmark provides interactive simulation environments
+      reconstructed from corresponding real robot setups, enabling controlled
+      and repeatable evaluation of spatial reasoning, physical forecasting,
+      and action-conditioned manipulation.
+
+    </p>
+
+
+    <p class="prose">
+
+      The simulation environment is built in Isaac Sim and aligned with the
+      corresponding real-world setup in scene geometry, robot configuration,
+      camera observations, and interaction dynamics. Jenga blocks are modeled
+      as interactive physical objects with contact and collision behavior,
+      allowing models to reason about candidate actions and their physical
+      consequences.
 
     </p>
 
@@ -346,26 +352,22 @@
       <div class="track">
 
         <span class="tag">
-          Step 1
+          Environment
         </span>
 
         <h4>
-          Real-to-Sim Reconstruction
+          Real-to-Sim
         </h4>
 
         <p>
 
-          The physical scene is captured using an Insta360 X5 panoramic camera.
-          The captured scene is reconstructed with Marble to obtain a digital
-          world representation, which is then imported into Isaac Sim for
-          lighting, geometry, and collision-surface construction.
+          Simulation scenes are reconstructed from corresponding physical
+          robot environments to support realistic and repeatable evaluation.
 
         </p>
 
         <span class="len">
-
-          Real capture · Marble reconstruction · Isaac Sim
-
+          Real setup · Simulation environment
         </span>
 
       </div>
@@ -375,25 +377,22 @@
       <div class="track">
 
         <span class="tag">
-          Step 2
+          Physics
         </span>
 
         <h4>
-          Robot &amp; Camera Alignment
+          Interactive Manipulation
         </h4>
 
         <p>
 
-          Robot and camera models are integrated into the reconstructed scene.
-          Camera geometry, robot configuration, and relevant dynamics
-          parameters are aligned between the physical and simulated setups.
+          Jenga blocks support contact, collision, pushing, insertion, and
+          structure-level interaction required by the challenge tasks.
 
         </p>
 
         <span class="len">
-
-          Camera alignment · Robot alignment · Dynamics matching
-
+          Contact · Collision · Object dynamics
         </span>
 
       </div>
@@ -403,42 +402,27 @@
       <div class="track">
 
         <span class="tag">
-          Step 3
+          Evaluation
         </span>
 
         <h4>
-          Interactive Physics
+          Action Rollout
         </h4>
 
         <p>
 
-          Jenga blocks and task objects are added with interactive physical
-          properties, enabling candidate robot actions to be rolled out and
-          evaluated inside the simulator before execution.
+          Candidate robot actions can be executed or rolled out in simulation,
+          enabling models to reason about possible physical outcomes before
+          selecting an action.
 
         </p>
 
         <span class="len">
-
-          Contacts · Collisions · Interactive object dynamics
-
+          Predict · Compare · Execute
         </span>
 
       </div>
 
-
-    </div>
-
-
-    <div class="callout">
-
-      <span class="k">
-        Setup Video
-      </span>
-
-      <p>
-        Demo video coming soon.
-      </p>
 
     </div>
 
@@ -492,7 +476,7 @@
         <p>
 
           Participants develop and evaluate models in a single-arm interactive
-          simulator reconstructed from the real environment. The focus is on
+          simulator corresponding to the real environment. The focus is on
           spatial reasoning, action forecasting, contact-aware planning, and
           manipulation under fragile physical constraints.
 
@@ -500,7 +484,7 @@
 
         <span class="len">
 
-          Single arm · Simulation · 2–3 manipulation tasks
+          Single arm · Simulation · Multiple manipulation tasks
 
         </span>
 
@@ -687,7 +671,6 @@
     <h3 class="sub-head">
       Demo Videos
     </h3>
-
 
 
     <div class="callout">
@@ -905,6 +888,18 @@
     </div>
 
 
+    <div class="cta-row">
+
+      <a
+        href="leaderboard.html"
+        class="btn btn-primary"
+      >
+        View Leaderboard
+      </a>
+
+    </div>
+
+
   </section>
 
 
@@ -952,7 +947,7 @@
 
         <b>Simulation environment.</b>
 
-        The reconstructed Jenga environment and task configurations used for
+        The Jenga simulation environment and task configurations used for
         challenge evaluation.
 
       </li>
@@ -973,7 +968,7 @@
 
         <b>Demonstrations.</b>
 
-        Approximately 50 demonstration trajectories per configured setting,
+        Demonstration trajectories for the released task configurations,
         together with representative real-robot trajectories where applicable.
 
       </li>
@@ -1246,24 +1241,22 @@
 
     <!--
 
-      TODO:
+    Add Phase 2 image later:
 
-      Add Phase 2 image later:
+    <figure style="margin-top: 24px;">
 
-      <figure style="margin-top: 24px;">
+      <img
+        src="assets/challenge/phase2-setup.jpg"
+        alt="Phase 2 bimanual Jenga setup"
+        style="
+          width: 100%;
+          height: auto;
+          border-radius: 16px;
+        "
+        loading="lazy"
+      >
 
-        <img
-          src="assets/challenge/phase2-setup.jpg"
-          alt="Phase 2 bimanual Jenga setup"
-          style="
-            width: 100%;
-            height: auto;
-            border-radius: 16px;
-          "
-          loading="lazy"
-        >
-
-      </figure>
+    </figure>
 
     -->
 
@@ -1273,7 +1266,7 @@
 
 
   <!-- =========================================================
-       08 TIMELINE
+       08 IMPORTANT DATES
        ========================================================= -->
 
   <section id="timeline">
@@ -1392,21 +1385,12 @@
     </div>
 
 
-
-    <p class="dates-note">
-
-      The phase-specific interpretation of the October evaluation milestones
-      will be updated once the final public evaluation schedule is confirmed.
-
-    </p>
-
-
   </section>
 
 
 
   <!-- =========================================================
-       09 REWARDS
+       09 CHALLENGE AWARDS
        ========================================================= -->
 
   <section id="rewards">
@@ -1483,127 +1467,281 @@
     <div class="spk-grid org-grid">
 
 
-      <!-- TODO: replace with real challenge organizers -->
-
+      <!-- =====================================================
+           XINYI XU
+           ===================================================== -->
 
       <figure class="spk">
 
-
         <img
-          src="assets/challenge-organizers/person-1.jpg"
-          alt="Challenge Organizer"
+          src="assets/organizers/xinyi-xu.jpg"
+          alt="Xinyi Xu"
           width="156"
           height="156"
           loading="lazy"
         >
 
-
         <figcaption>
-
 
           <a
             class="nm"
-            href="#"
+            href="https://XinyiXu-0214.github.io"
             target="_blank"
             rel="noopener"
           >
-
-            Organizer Name
-
+            Xinyi Xu
           </a>
 
-
           <span class="aff">
-
-            Institution
-
+            Northeastern University
           </span>
 
-
         </figcaption>
-
 
       </figure>
 
 
 
+      <!-- =====================================================
+           YU QI
+           ===================================================== -->
+
       <figure class="spk">
 
-
         <img
-          src="assets/challenge-organizers/person-2.jpg"
-          alt="Challenge Organizer"
+          src="assets/organizers/yu-qi.jpg"
+          alt="Yu Qi"
           width="156"
           height="156"
           loading="lazy"
         >
 
-
         <figcaption>
-
 
           <a
             class="nm"
-            href="#"
+            href="https://yqi19.github.io/"
             target="_blank"
             rel="noopener"
           >
-
-            Organizer Name
-
+            Yu Qi
           </a>
 
-
           <span class="aff">
-
-            Institution
-
+            Northeastern University
           </span>
 
-
         </figcaption>
-
 
       </figure>
 
 
 
+      <!-- =====================================================
+           YIFAN YIN
+           ===================================================== -->
+
       <figure class="spk">
 
-
         <img
-          src="assets/challenge-organizers/person-3.jpg"
-          alt="Challenge Organizer"
+          src="assets/organizers/yifan-yin.jpg"
+          alt="Yifan Yin"
           width="156"
           height="156"
           loading="lazy"
         >
 
-
         <figcaption>
-
 
           <a
             class="nm"
-            href="#"
+            href="https://yifanyin11.github.io/"
             target="_blank"
             rel="noopener"
           >
-
-            Organizer Name
-
+            Yifan Yin
           </a>
 
-
           <span class="aff">
-
-            Institution
-
+            Johns Hopkins University
           </span>
-
 
         </figcaption>
 
+      </figure>
+
+
+
+      <!-- =====================================================
+           KEVIN ZHANG
+           ===================================================== -->
+
+      <figure class="spk">
+
+        <img
+          src="assets/organizers/kevin-zhang.jpg"
+          alt="Kevin Zhang"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
+
+        <figcaption>
+
+          <a
+            class="nm"
+            href="https://scholar.google.com/citations?user=TJAXRy8AAAAJ&hl=en"
+            target="_blank"
+            rel="noopener"
+          >
+            Kevin Zhang
+          </a>
+
+          <span class="aff">
+            Peking University
+          </span>
+
+        </figcaption>
+
+      </figure>
+
+
+
+      <!-- =====================================================
+           SIYUAN MA
+           ===================================================== -->
+
+      <figure class="spk">
+
+        <img
+          src="assets/organizers/siyuan-ma.jpg"
+          alt="Siyuan Ma"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
+
+        <figcaption>
+
+          <a
+            class="nm"
+            href="https://SiyuanMaCS.github.io"
+            target="_blank"
+            rel="noopener"
+          >
+            Siyuan Ma
+          </a>
+
+          <span class="aff">
+            CUHK
+          </span>
+
+        </figcaption>
+
+      </figure>
+
+
+
+      <!-- =====================================================
+           CHAK-WING MAK
+           ===================================================== -->
+
+      <figure class="spk">
+
+        <img
+          src="assets/challenge-organizers/chak-wing-mak.jpg"
+          alt="Chak-Wing Mak"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
+
+        <figcaption>
+
+          <a
+            class="nm"
+            href="https://www.marco-mak.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            Chak-Wing Mak
+          </a>
+
+          <span class="aff">
+            Peking University
+          </span>
+
+        </figcaption>
+
+      </figure>
+
+
+
+      <!-- =====================================================
+           XIAOJIE ZHANG
+           ===================================================== -->
+
+      <figure class="spk">
+
+        <img
+          src="assets/challenge-organizers/xiaojie-zhang.jpg"
+          alt="Xiaojie Zhang"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
+
+        <figcaption>
+
+          <a
+            class="nm"
+            href="https://scholar.google.com/citations?user=64F5aYMAAAAJ&hl=zh-CN"
+            target="_blank"
+            rel="noopener"
+          >
+            Xiaojie Zhang
+          </a>
+
+          <span class="aff">
+            HKUST
+          </span>
+
+        </figcaption>
+
+      </figure>
+
+
+
+      <!-- =====================================================
+           ZEWEN YANG
+           ===================================================== -->
+
+      <figure class="spk">
+
+        <img
+          src="assets/challenge-organizers/zewen-yang.jpg"
+          alt="Zewen Yang"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
+
+        <figcaption>
+
+          <a
+            class="nm"
+            href="https://github.com/Hnyquister"
+            target="_blank"
+            rel="noopener"
+          >
+            Zewen Yang
+          </a>
+
+          <span class="aff">
+            University of Electronic Science and Technology of China
+          </span>
+
+        </figcaption>
 
       </figure>
 
@@ -1642,9 +1780,15 @@
 
 
       <a href="index.html">
-
         ← Back to Workshop
+      </a>
 
+
+      &nbsp;·&nbsp;
+
+
+      <a href="leaderboard.html">
+        Leaderboard
       </a>
 
 
@@ -1655,9 +1799,7 @@
 
 
       <a href="mailto:action.gap.workshop@gmail.com">
-
         action.gap.workshop@gmail.com
-
       </a>
 
 
