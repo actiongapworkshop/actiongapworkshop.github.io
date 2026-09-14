@@ -16,7 +16,7 @@
 
   <meta
     name="description"
-    content="G2A Jenga Challenge at CoRL 2026 — an interactive benchmark for evaluating world and action models through spatial reasoning, physical forecasting, and robot manipulation."
+    content="G2A Jenga Challenge at CoRL 2026 — powered by TOWER, a reproducible robotics simulation benchmark for long-horizon tower manipulation."
   >
 
   <link
@@ -105,12 +105,13 @@
 
     <p
       class="lead"
-      style="max-width: 900px; margin: 20px auto 0;"
+      style="max-width: 920px; margin: 20px auto 0;"
     >
 
-      An interactive benchmark for evaluating whether world and action models
-      can understand spatial structure, forecast the outcomes of candidate
-      robot actions, and use those predictions to guide reliable manipulation.
+      An interactive robot manipulation challenge for evaluating whether
+      world and action models can understand spatial structure, forecast
+      the consequences of robot actions, and use those predictions to guide
+      reliable long-horizon manipulation.
 
     </p>
 
@@ -125,11 +126,11 @@
         </span>
 
         <span class="val">
-          Single-Arm · Sim Only
+          TOWER Simulation
         </span>
 
         <span class="note">
-          Interactive Jenga manipulation in simulation
+          Standardized evaluation in Isaac Sim
         </span>
 
       </div>
@@ -142,11 +143,11 @@
         </span>
 
         <span class="val">
-          Bimanual · Sim &amp; Real
+          Sim &amp; Real
         </span>
 
         <span class="note">
-          Sim-to-real evaluation on a dual-arm setup
+          Sim-to-real evaluation
         </span>
 
       </div>
@@ -175,11 +176,11 @@
     <div class="cta-row">
 
 
-      <!-- TODO: Replace with final GitHub repository URL -->
-
       <a
-        href="#participation"
+        href="https://github.com/tower-benchmark/TOWER"
         class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
       >
         Get Started
       </a>
@@ -230,32 +231,31 @@
 
     <p class="lead">
 
-      The G2A Jenga Challenge is an interactive robot manipulation benchmark
-      for evaluating Action-Conditioned World Models (ACWMs), World Action
-      Models (WAMs), and related approaches in settings where understanding
-      the consequences of an action is critical to success.
+      The G2A Jenga Challenge evaluates world models, action-conditioned
+      world models, world action models, and robot policies in manipulation
+      settings where understanding the physical consequences of an action is
+      critical to success.
 
     </p>
 
 
     <p class="prose">
 
-      Jenga provides a compact but challenging testbed for spatial reasoning,
-      physical forecasting, and closed-loop interaction. Before executing an
-      action, a capable model should be able to reason about the current tower
-      structure, predict the outcomes of alternative actions, and select
-      actions that accomplish the task without destabilizing the scene.
+      Tower manipulation provides a compact but challenging testbed for
+      spatial reasoning, physical forecasting, contact-aware interaction,
+      and long-horizon control. Before executing an action, a capable system
+      should reason about the current structure, anticipate possible outcomes,
+      and select actions that accomplish the task without destabilizing the
+      environment.
 
     </p>
 
 
     <p class="prose">
 
-      The challenge evaluates this capability through manipulation tasks
-      involving block transfer, extraction, replacement, and coordinated
-      interaction. Rather than evaluating visual prediction alone, the
-      benchmark asks whether predicted future outcomes can support executable
-      and reliable robot behavior.
+      The challenge therefore goes beyond visual prediction alone. It asks
+      whether predicted or modeled future outcomes can support executable,
+      reliable, and physically consistent robot behavior.
 
     </p>
 
@@ -305,10 +305,10 @@
 
 
   <!-- =========================================================
-       02 BENCHMARK ENVIRONMENT
+       02 TOWER BENCHMARK
        ========================================================= -->
 
-  <section id="environment">
+  <section id="tower">
 
 
     <div class="sec-head">
@@ -318,7 +318,7 @@
       </span>
 
       <h2>
-        Benchmark Environment
+        TOWER Benchmark
       </h2>
 
     </div>
@@ -326,22 +326,22 @@
 
     <p class="lead">
 
-      The G2A Jenga benchmark provides interactive simulation environments
-      reconstructed from corresponding real robot setups, enabling controlled
-      and repeatable evaluation of spatial reasoning, physical forecasting,
-      and action-conditioned manipulation.
+      The G2A Jenga Challenge is powered by
+      <b>TOWER</b>, a reproducible robotics simulation benchmark for
+      long-horizon tower manipulation.
 
     </p>
 
 
     <p class="prose">
 
-      The simulation environment is built in Isaac Sim and aligned with the
-      corresponding real-world setup in scene geometry, robot configuration,
-      camera observations, and interaction dynamics. Jenga blocks are modeled
-      as interactive physical objects with contact and collision behavior,
-      allowing models to reason about candidate actions and their physical
-      consequences.
+      TOWER provides calibrated, versioned task environments and a
+      model-agnostic evaluation interface for standardized policy evaluation.
+      The primary physics-based benchmark runtime uses Isaac Sim on NVIDIA
+      GPUs, while participant policies can run either directly inside the
+      evaluation process or through the
+      <code>tower-policy-v1</code>
+      HTTP/WebSocket adapter protocol.
 
     </p>
 
@@ -349,80 +349,111 @@
     <div class="track-grid">
 
 
+      <!-- ISAAC SIM -->
+
       <div class="track">
 
         <span class="tag">
-          Environment
+          Runtime
         </span>
 
         <h4>
-          Real-to-Sim
+          Isaac Sim Benchmark
         </h4>
 
         <p>
 
-          Simulation scenes are reconstructed from corresponding physical
-          robot environments to support realistic and repeatable evaluation.
+          Official physics-based benchmark evaluation runs in Isaac Sim using
+          standardized task definitions, versioned scenes, and reproducible
+          configurations.
 
         </p>
 
         <span class="len">
-          Real setup · Simulation environment
+          Isaac Sim · NVIDIA GPU · Physics-based evaluation
         </span>
 
       </div>
 
 
 
+      <!-- POLICY INTERFACE -->
+
       <div class="track">
 
         <span class="tag">
-          Physics
+          Interface
         </span>
 
         <h4>
-          Interactive Manipulation
+          Model-Agnostic Evaluation
         </h4>
 
         <p>
 
-          Jenga blocks support contact, collision, pushing, insertion, and
-          structure-level interaction required by the challenge tasks.
+          Policies can run in-process or connect through the
+          tower-policy-v1 HTTP/WebSocket adapter protocol, supporting local
+          PyTorch, JAX, and remote policy implementations.
 
         </p>
 
         <span class="len">
-          Contact · Collision · Object dynamics
+          In-process · HTTP · WebSocket
         </span>
 
       </div>
 
 
 
+      <!-- REPRODUCIBILITY -->
+
       <div class="track">
 
         <span class="tag">
-          Evaluation
+          Reproducibility
         </span>
 
         <h4>
-          Action Rollout
+          Versioned Tasks &amp; Assets
         </h4>
 
         <p>
 
-          Candidate robot actions can be executed or rolled out in simulation,
-          enabling models to reason about possible physical outcomes before
-          selecting an action.
+          Task layouts, block variants, benchmark configurations, seeds, and
+          simulation assets are versioned to support reproducible comparison
+          across methods.
 
         </p>
 
         <span class="len">
-          Predict · Compare · Execute
+          Tasks · Assets · Configurations · Seeds
         </span>
 
       </div>
 
+
+    </div>
+
+
+    <div class="callout">
+
+      <span class="k">
+        Benchmark Repository
+      </span>
+
+      <p>
+
+        TOWER is open source under the Apache 2.0 license.
+
+        <a
+          href="https://github.com/tower-benchmark/TOWER"
+          target="_blank"
+          rel="noopener"
+        >
+          View TOWER on GitHub →
+        </a>
+
+      </p>
 
     </div>
 
@@ -453,9 +484,9 @@
 
     <p class="lead">
 
-      The challenge progresses from controlled single-arm simulation to
-      coordinated bimanual manipulation evaluated in both simulation and the
-      physical world.
+      The challenge progresses from standardized physics-based simulation
+      evaluation to evaluation across both simulated and physical robot
+      environments.
 
     </p>
 
@@ -463,34 +494,38 @@
     <div class="track-grid">
 
 
+      <!-- PHASE 1 -->
+
       <div class="track">
 
         <span class="tag">
-          Phase 1 · Sim Only
+          Phase 1 · Simulation
         </span>
 
         <h4>
-          Single-Arm Jenga Manipulation
+          TOWER Simulation Benchmark
         </h4>
 
         <p>
 
-          Participants develop and evaluate models in a single-arm interactive
-          simulator corresponding to the real environment. The focus is on
-          spatial reasoning, action forecasting, contact-aware planning, and
-          manipulation under fragile physical constraints.
+          Phase 1 evaluates robot policies using the official TOWER Isaac Sim
+          runtime. Participants are evaluated under standardized task
+          definitions, scene assets, physics settings, and evaluation
+          configurations.
 
         </p>
 
         <span class="len">
 
-          Single arm · Simulation · Multiple manipulation tasks
+          tower_transfer · cross_tower_transfer · aligned_stack
 
         </span>
 
       </div>
 
 
+
+      <!-- PHASE 2 -->
 
       <div class="track">
 
@@ -499,21 +534,21 @@
         </span>
 
         <h4>
-          Bimanual Sim-to-Real Evaluation
+          Sim-to-Real Evaluation
         </h4>
 
         <p>
 
-          Phase 2 extends the benchmark to coordinated dual-arm manipulation.
-          Models are evaluated in simulation and the corresponding physical
-          robot setup, enabling direct study of simulation performance,
-          real-world performance, and their correlation.
+          Phase 2 extends evaluation beyond simulation by comparing policy
+          behavior in corresponding simulated and physical robot
+          environments, enabling direct analysis of real-world performance
+          and sim-to-real consistency.
 
         </p>
 
         <span class="len">
 
-          Dual arm · Simulation + Real · Sim-to-real correlation
+          Simulation · Physical robot · Sim-to-real comparison
 
         </span>
 
@@ -528,7 +563,7 @@
 
 
   <!-- =========================================================
-       04 PHASE 1 TASKS
+       04 BENCHMARK TASKS
        ========================================================= -->
 
   <section id="tasks">
@@ -541,7 +576,7 @@
       </span>
 
       <h2>
-        Phase 1 Tasks
+        Benchmark Tasks
       </h2>
 
     </div>
@@ -549,9 +584,8 @@
 
     <p class="lead">
 
-      Phase 1 contains Jenga manipulation tasks with increasing requirements
-      for spatial reasoning, physical forecasting, contact-aware interaction,
-      and long-horizon execution.
+      TOWER provides versioned tower-manipulation task families for evaluating
+      long-horizon robot policies under standardized physical conditions.
 
     </p>
 
@@ -564,24 +598,23 @@
       <div class="track">
 
         <span class="tag">
-          Easy
+          Task Family
         </span>
 
         <h4>
-          Tower Transfer
+          tower_transfer
         </h4>
 
         <p>
 
-          Transfer the center block from selected layers of a source tower to
-          the corresponding positions of a target tower. Evaluation instances
-          vary in the number and location of blocks that must be transferred.
+          Tower-transfer tasks evaluate structured long-horizon manipulation
+          across source and target tower configurations.
 
         </p>
 
         <span class="len">
 
-          Spatial correspondence · Pick-and-place · Long-horizon consistency
+          Long-horizon manipulation · Spatial correspondence
 
         </span>
 
@@ -594,24 +627,24 @@
       <div class="track">
 
         <span class="tag">
-          Medium
+          Task Family
         </span>
 
         <h4>
-          Cross-Tower Transfer
+          cross_tower_transfer
         </h4>
 
         <p>
 
-          Manipulate a cross-oriented Jenga structure by sequentially
-          transferring blocks between towers while preserving the intended
-          structure and avoiding collapse.
+          Cross-tower transfer configurations evaluate sequential manipulation
+          while requiring policies to preserve the intended tower structure
+          throughout execution.
 
         </p>
 
         <span class="len">
 
-          Sequential manipulation · Structure preservation · Stability
+          Sequential manipulation · Structure preservation
 
         </span>
 
@@ -624,24 +657,24 @@
       <div class="track">
 
         <span class="tag">
-          Medium
+          Task Family
         </span>
 
         <h4>
-          Block Replacement
+          aligned_stack
         </h4>
 
         <p>
 
-          Insert a new block to push a designated target block out of the
-          tower, while simultaneously occupying and preserving the target
-          block's original position.
+          The aligned_stack family is part of the official TOWER task catalog.
+          Task layouts and per-block geometry and physics specifications are
+          versioned together with the benchmark configuration.
 
         </p>
 
         <span class="len">
 
-          Contact reasoning · Action forecasting · Precise insertion
+          Versioned layout · Standardized physics contract
 
         </span>
 
@@ -653,63 +686,32 @@
 
 
     <h3 class="sub-head">
-      Tower Transfer Evaluation Set
+      Versioned Task Definitions
     </h3>
 
 
     <p class="prose">
 
-      The current Tower Transfer setup includes 1-, 2-, and 3-layer variants,
-      with 50 evaluation instances per setting for a total of 150 instances.
-      Additional task configurations may be added before the final benchmark
-      release.
+      TOWER task layouts and block variants are versioned independently of
+      the evaluator. The official catalog uses task identifiers including
+      <code>tower_transfer_X</code>,
+      <code>cross_tower_transfer_X</code>,
+      and
+      <code>aligned_stack_X</code>.
 
     </p>
 
 
+    <div class="cta-row">
 
-    <h3 class="sub-head">
-      Demo Videos
-    </h3>
-
-
-    <div class="callout">
-
-      <span class="k">
-        Tower Transfer
-      </span>
-
-      <p>
-        Demo video coming soon.
-      </p>
-
-    </div>
-
-
-
-    <div class="callout">
-
-      <span class="k">
-        Cross-Tower Transfer
-      </span>
-
-      <p>
-        Demo video coming soon.
-      </p>
-
-    </div>
-
-
-
-    <div class="callout">
-
-      <span class="k">
-        Block Replacement
-      </span>
-
-      <p>
-        Demo video coming soon.
-      </p>
+      <a
+        href="https://github.com/tower-benchmark/TOWER/blob/main/docs/tasks.md"
+        class="btn btn-ghost"
+        target="_blank"
+        rel="noopener"
+      >
+        Task Documentation
+      </a>
 
     </div>
 
@@ -740,8 +742,8 @@
 
     <p class="lead">
 
-      Models are evaluated on both task completion and the physical quality
-      of their interaction with the Jenga structure.
+      Policies are evaluated using the official TOWER benchmark runtime and
+      standardized challenge metrics.
 
     </p>
 
@@ -771,7 +773,6 @@
           </tr>
 
         </thead>
-
 
 
         <tbody>
@@ -806,7 +807,7 @@
 
             <td>
 
-              Fraction of required tower levels successfully completed before
+              Fraction of required task progress successfully completed before
               termination.
 
             </td>
@@ -827,7 +828,7 @@
 
             <td>
 
-              Fraction of episodes in which the Jenga structure collapses
+              Fraction of episodes in which the tower structure collapses
               during execution.
 
             </td>
@@ -878,10 +879,10 @@
 
       <p>
 
-        Success Rate will be used as the primary benchmark metric in the
-        initial release. Progress, collapse, and completion time will be
-        reported as complementary metrics. The final ranking protocol will be
-        announced with the evaluation release.
+        Success Rate will be used as the primary metric in the initial
+        challenge release. Progress, collapse, and completion time will be
+        reported as complementary metrics. Final ranking and tie-breaking
+        rules will be published with the official evaluation release.
 
       </p>
 
@@ -926,16 +927,16 @@
 
     <p class="lead">
 
-      We provide the simulation environment, task definitions, demonstration
-      data, evaluation configuration, and standardized test protocol required
-      to participate.
+      TOWER provides the evaluator, policy integration interface,
+      reproducibility tools, and benchmark configuration needed to develop
+      and validate participant policies.
 
     </p>
 
 
 
     <h3 class="sub-head">
-      What We Provide
+      Current TOWER Capabilities
     </h3>
 
 
@@ -945,20 +946,10 @@
 
       <li>
 
-        <b>Simulation environment.</b>
+        <b>Isaac Sim / GPU benchmark runtime.</b>
 
-        The Jenga simulation environment and task configurations used for
-        challenge evaluation.
-
-      </li>
-
-
-
-      <li>
-
-        <b>Training and test splits.</b>
-
-        Standardized train/test settings for each released task.
+        The primary physics-based evaluation runtime uses Isaac Sim and is
+        installed separately from the Python workspace.
 
       </li>
 
@@ -966,21 +957,10 @@
 
       <li>
 
-        <b>Demonstrations.</b>
+        <b>Policy adapter interface.</b>
 
-        Demonstration trajectories for the released task configurations,
-        together with representative real-robot trajectories where applicable.
-
-      </li>
-
-
-
-      <li>
-
-        <b>Robot actions.</b>
-
-        Standardized joint-space representations and reference trajectories
-        for interfacing participant models with the evaluation environment.
+        Participant policies can connect through the provided HTTP/WebSocket
+        adapter template using the tower-policy-v1 protocol.
 
       </li>
 
@@ -988,10 +968,11 @@
 
       <li>
 
-        <b>Evaluation code.</b>
+        <b>CPU smoke test and integration harness.</b>
 
-        Evaluation scripts, task configuration files, and submission-format
-        validation tools.
+        A deterministic CPU reference backend is provided for installation
+        checks, continuous integration, configuration validation, and policy
+        integration.
 
       </li>
 
@@ -999,10 +980,21 @@
 
       <li>
 
-        <b>Leaderboard.</b>
+        <b>Task and asset validation.</b>
 
-        A public leaderboard for tracking benchmark performance across
-        challenge submissions.
+        The evaluator supports validation of task descriptors and benchmark
+        asset closure.
+
+      </li>
+
+
+
+      <li>
+
+        <b>Versioned task definitions.</b>
+
+        Task layouts and block variants are versioned independently from the
+        evaluator.
 
       </li>
 
@@ -1011,31 +1003,18 @@
 
 
 
-    <h3 class="sub-head">
-      Submission Flow
-    </h3>
-
-
-
     <div class="callout">
 
       <span class="k">
-        Workflow
+        Important
       </span>
 
       <p>
 
-        Train / Demo Data
-        &rarr;
-        Participant Model
-        &rarr;
-        Test Set
-        &rarr;
-        Model Output
-        &rarr;
-        Evaluation Server
-        &rarr;
-        Leaderboard
+        The deterministic CPU backend is an integration and testing harness.
+        It does not simulate tower contacts and is not the official
+        physics-based benchmark. Official physical interaction evaluation
+        requires the Isaac Sim runtime.
 
       </p>
 
@@ -1044,104 +1023,101 @@
 
 
     <h3 class="sub-head">
-      How to Participate
+      Quickstart
     </h3>
 
 
+    <div class="callout">
 
-    <ul class="topic-list">
+      <span class="k">
+        CPU Installation Check
+      </span>
 
+      <p>
 
-      <li>
+        Clone the repository, install the locked workspace dependencies, and
+        run the TOWER smoke tests before configuring the Isaac Sim benchmark
+        runtime.
 
-        <b>1. Download.</b>
+      </p>
 
-        Download the simulator, task definitions, demonstrations, and starter
-        code from the challenge repository.
-
-      </li>
-
-
-
-      <li>
-
-        <b>2. Develop.</b>
-
-        Train, adapt, or prompt your model using the permitted resources.
-
-      </li>
+    </div>
 
 
+    <div
+      style="
+        margin-top: 18px;
+        overflow-x: auto;
+      "
+    >
 
-      <li>
+      <pre
+        style="
+          padding: 22px;
+          border-radius: 14px;
+          border: 1px solid var(--line, #d8dde6);
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.86rem;
+          line-height: 1.65;
+          white-space: pre;
+        "
+      >git clone https://github.com/tower-benchmark/TOWER.git
+cd TOWER
+uv sync --locked
+uv run --package tower-eval tower smoke
+uv run --package tower-eval pytest</pre>
 
-        <b>3. Run.</b>
-
-        Produce outputs for the released challenge test inputs using the
-        required submission format.
-
-      </li>
-
-
-
-      <li>
-
-        <b>4. Submit.</b>
-
-        Upload the model outputs to the evaluation system.
-
-      </li>
+    </div>
 
 
 
-      <li>
-
-        <b>5. Evaluate.</b>
-
-        Valid submissions are evaluated using the official benchmark metrics
-        and displayed on the leaderboard.
-
-      </li>
+    <h3 class="sub-head">
+      Policy Integration
+    </h3>
 
 
-    </ul>
+    <p class="prose">
 
+      Participants may wrap their own PyTorch, JAX, or remote policy using
+      the provided three-method
+      <code>PolicyAdapter</code>
+      interface. The same policy lifecycle is used for local and remote
+      evaluation.
+
+    </p>
 
 
     <div class="cta-row">
 
 
-      <!-- TODO: GitHub URL -->
-
       <a
-        href="#"
+        href="https://github.com/tower-benchmark/TOWER"
         class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
       >
-        GitHub &amp; Starter Code
+        TOWER GitHub
       </a>
 
-
-
-      <!-- TODO: Dataset URL -->
 
       <a
-        href="#"
+        href="https://github.com/tower-benchmark/TOWER/blob/main/docs/isaac-sim.md"
         class="btn btn-ghost"
+        target="_blank"
+        rel="noopener"
       >
-        Dataset
+        Isaac Sim Setup
       </a>
 
-
-
-      <!-- TODO: Submission server URL -->
 
       <a
-        href="#"
+        href="https://github.com/tower-benchmark/TOWER/blob/main/docs/tasks.md"
         class="btn btn-ghost"
+        target="_blank"
+        rel="noopener"
       >
-        Submit Results
+        Task Documentation
       </a>
-
 
 
       <a
@@ -1156,12 +1132,58 @@
 
 
 
-    <p class="dates-note">
+    <h3 class="sub-head">
+      Benchmark Assets
+    </h3>
 
-      Repository, dataset, and submission-server links will be added as the
-      corresponding challenge components are released.
+
+    <p class="prose">
+
+      Large simulation assets are distributed separately from the source
+      repository through a checksum-verified manifest. Official benchmark
+      asset and layout download links will be published before the first
+      benchmark release.
 
     </p>
+
+
+    <p class="dates-note">
+
+      The benchmark data generator is not included in the initial public
+      release.
+
+    </p>
+
+
+
+    <h3 class="sub-head">
+      Submission Flow
+    </h3>
+
+
+    <div class="callout">
+
+      <span class="k">
+        Workflow
+      </span>
+
+      <p>
+
+        Benchmark Assets
+        &rarr;
+        Participant Policy
+        &rarr;
+        TOWER Evaluator
+        &rarr;
+        Official Test Configuration
+        &rarr;
+        Evaluation Results
+        &rarr;
+        Leaderboard
+
+      </p>
+
+    </div>
 
 
   </section>
@@ -1182,7 +1204,7 @@
       </span>
 
       <h2>
-        Phase 2: Bimanual Sim-to-Real
+        Phase 2: Sim-to-Real Evaluation
       </h2>
 
     </div>
@@ -1190,75 +1212,103 @@
 
     <p class="lead">
 
-      Phase 2 extends the benchmark from single-arm simulation to coordinated
-      bimanual manipulation evaluated in both simulation and the real world.
+      Phase 2 extends the challenge from standardized simulation evaluation
+      to comparison across simulated and physical robot environments.
 
     </p>
-
 
 
     <p class="prose">
 
-      Participants will receive the corresponding simulation environment and
-      task data for the bimanual setup. Evaluation will compare simulated
-      performance with execution on the physical robot system, allowing the
-      challenge to study not only task success but also how reliably simulation
-      performance predicts real-world behavior.
+      The goal is to study not only whether a policy succeeds in simulation,
+      but also how reliably simulation performance predicts behavior on the
+      corresponding physical robot system.
 
     </p>
 
 
+    <div class="track-grid">
 
-    <div class="callout">
 
-      <span class="k">
-        Sim-to-Real Evaluation
-      </span>
+      <div class="track">
 
-      <p>
+        <span class="tag">
+          Simulation
+        </span>
 
-        Phase 2 explicitly evaluates the relationship between simulated task
-        performance and physical robot performance.
+        <h4>
+          Standardized Evaluation
+        </h4>
 
-      </p>
+        <p>
+
+          Policies are first evaluated under controlled simulation conditions
+          using standardized task configurations and benchmark metrics.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="track">
+
+        <span class="tag">
+          Real
+        </span>
+
+        <h4>
+          Physical Evaluation
+        </h4>
+
+        <p>
+
+          Selected policies are evaluated on the corresponding physical robot
+          setup using matched manipulation tasks.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="track">
+
+        <span class="tag">
+          Analysis
+        </span>
+
+        <h4>
+          Sim-to-Real Consistency
+        </h4>
+
+        <p>
+
+          Simulation and real-world results are compared to analyze how well
+          benchmark performance transfers to physical execution.
+
+        </p>
+
+      </div>
+
 
     </div>
 
 
-
     <div class="callout">
 
       <span class="k">
-        Phase 2 Setup
+        Phase 2 Details
       </span>
 
       <p>
-        Setup photo and task details coming soon.
+
+        Physical setup, task definitions, and the final Phase 2 evaluation
+        protocol will be announced separately.
+
       </p>
 
     </div>
-
-
-    <!--
-
-    Add Phase 2 image later:
-
-    <figure style="margin-top: 24px;">
-
-      <img
-        src="assets/challenge/phase2-setup.jpg"
-        alt="Phase 2 bimanual Jenga setup"
-        style="
-          width: 100%;
-          height: auto;
-          border-radius: 16px;
-        "
-        loading="lazy"
-      >
-
-    </figure>
-
-    -->
 
 
   </section>
@@ -1287,11 +1337,11 @@
 
     <p class="lead">
 
-      Challenge components will be released progressively as the simulation,
-      real-world setup, and evaluation pipeline are finalized.
+      Challenge components will be released progressively as benchmark assets,
+      evaluation configurations, and physical evaluation infrastructure are
+      finalized.
 
     </p>
-
 
 
     <div class="dates-wrap">
@@ -1317,14 +1367,13 @@
         </thead>
 
 
-
         <tbody>
 
 
           <tr>
 
             <td>
-              Bimanual Sim &amp; Real Dataset Release
+              Sim &amp; Real Dataset Release
             </td>
 
             <td class="dt">
@@ -1416,7 +1465,6 @@
     </p>
 
 
-
     <div class="callout">
 
       <span class="k">
@@ -1463,267 +1511,289 @@
     </p>
 
 
-
     <div class="spk-grid org-grid">
 
 
-  <!-- Chak-Wing Mak -->
+      <!-- =====================================================
+           CHAK-WING MAK
+           ===================================================== -->
 
-  <figure class="spk">
+      <figure class="spk">
 
-    <img
-      src="assets/organizers/chak-wing-mak.jpg"
-      alt="Chak-Wing Mak"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
+        <img
+          src="assets/organizers/chak-wing-mak.jpg"
+          alt="Chak-Wing Mak"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
 
-    <figcaption>
+        <figcaption>
 
-      <a
-        class="nm"
-        href="https://www.marco-mak.com/"
-        target="_blank"
-        rel="noopener"
-      >
-        Chak-Wing Mak
-      </a>
+          <a
+            class="nm"
+            href="https://www.marco-mak.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            Chak-Wing Mak
+          </a>
 
-      <span class="aff">
-        Peking University
-      </span>
+          <span class="aff">
+            Peking University
+          </span>
 
-    </figcaption>
+        </figcaption>
 
-  </figure>
+      </figure>
 
 
-  <!-- Kevin Zhang -->
 
-  <figure class="spk">
+      <!-- =====================================================
+           KEVIN ZHANG
+           ===================================================== -->
 
-    <img
-      src="assets/organizers/kevin-zhang.jpg"
-      alt="Kevin Zhang"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
+      <figure class="spk">
 
-    <figcaption>
+        <img
+          src="assets/organizers/kevin-zhang.jpg"
+          alt="Kevin Zhang"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
 
-      <a
-        class="nm"
-        href="https://scholar.google.com/citations?user=TJAXRy8AAAAJ&hl=en"
-        target="_blank"
-        rel="noopener"
-      >
-        Kevin Zhang
-      </a>
+        <figcaption>
 
-      <span class="aff">
-        Peking University
-      </span>
+          <a
+            class="nm"
+            href="https://scholar.google.com/citations?user=TJAXRy8AAAAJ&hl=en"
+            target="_blank"
+            rel="noopener"
+          >
+            Kevin Zhang
+          </a>
 
-    </figcaption>
+          <span class="aff">
+            Peking University
+          </span>
 
-  </figure>
+        </figcaption>
 
+      </figure>
 
-  <!-- Xiaojie Zhang -->
 
-  <figure class="spk">
 
-    <img
-      src="assets/organizers/xiaojie-zhang.jpg"
-      alt="Xiaojie Zhang"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
+      <!-- =====================================================
+           XIAOJIE ZHANG
+           ===================================================== -->
 
-    <figcaption>
+      <figure class="spk">
 
-      <a
-        class="nm"
-        href="https://scholar.google.com/citations?user=64F5aYMAAAAJ&hl=zh-CN"
-        target="_blank"
-        rel="noopener"
-      >
-        Xiaojie Zhang
-      </a>
+        <img
+          src="assets/organizers/xiaojie-zhang.jpg"
+          alt="Xiaojie Zhang"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
 
-      <span class="aff">
-        HKUST
-      </span>
+        <figcaption>
 
-    </figcaption>
+          <a
+            class="nm"
+            href="https://scholar.google.com/citations?user=64F5aYMAAAAJ&hl=zh-CN"
+            target="_blank"
+            rel="noopener"
+          >
+            Xiaojie Zhang
+          </a>
 
-  </figure>
+          <span class="aff">
+            HKUST
+          </span>
 
+        </figcaption>
 
-  <!-- Zewen Yang -->
+      </figure>
 
-  <figure class="spk">
 
-    <img
-      src="assets/organizers/zewen-yang.jpg"
-      alt="Zewen Yang"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
 
-    <figcaption>
+      <!-- =====================================================
+           ZEWEN YANG
+           ===================================================== -->
 
-      <a
-        class="nm"
-        href="https://github.com/Hnyquister"
-        target="_blank"
-        rel="noopener"
-      >
-        Zewen Yang
-      </a>
+      <figure class="spk">
 
-      <span class="aff">
-        University of Electronic Science and Technology of China
-      </span>
+        <img
+          src="assets/organizers/zewen-yang.jpg"
+          alt="Zewen Yang"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
 
-    </figcaption>
+        <figcaption>
 
-  </figure>
+          <a
+            class="nm"
+            href="https://github.com/Hnyquister"
+            target="_blank"
+            rel="noopener"
+          >
+            Zewen Yang
+          </a>
 
+          <span class="aff">
+            University of Electronic Science and Technology of China
+          </span>
 
-  <!-- Yu Qi -->
+        </figcaption>
 
-  <figure class="spk">
+      </figure>
 
-    <img
-      src="assets/organizers/yu-qi.jpg"
-      alt="Yu Qi"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
 
-    <figcaption>
 
-      <a
-        class="nm"
-        href="https://yqi19.github.io/"
-        target="_blank"
-        rel="noopener"
-      >
-        Yu Qi
-      </a>
+      <!-- =====================================================
+           YU QI
+           ===================================================== -->
 
-      <span class="aff">
-        Northeastern University
-      </span>
+      <figure class="spk">
 
-    </figcaption>
+        <img
+          src="assets/organizers/yu-qi.jpg"
+          alt="Yu Qi"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
 
-  </figure>
+        <figcaption>
 
+          <a
+            class="nm"
+            href="https://yqi19.github.io/"
+            target="_blank"
+            rel="noopener"
+          >
+            Yu Qi
+          </a>
 
-  <!-- Xinyi Xu -->
+          <span class="aff">
+            Northeastern University
+          </span>
 
-  <figure class="spk">
+        </figcaption>
 
-    <img
-      src="assets/organizers/xinyi-xu.jpg"
-      alt="Xinyi Xu"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
+      </figure>
 
-    <figcaption>
 
-      <a
-        class="nm"
-        href="https://XinyiXu-0214.github.io"
-        target="_blank"
-        rel="noopener"
-      >
-        Xinyi Xu
-      </a>
 
-      <span class="aff">
-        Northeastern University
-      </span>
+      <!-- =====================================================
+           XINYI XU
+           ===================================================== -->
 
-    </figcaption>
+      <figure class="spk">
 
-  </figure>
+        <img
+          src="assets/organizers/xinyi-xu.jpg"
+          alt="Xinyi Xu"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
 
+        <figcaption>
 
-  <!-- Yifan Yin -->
+          <a
+            class="nm"
+            href="https://XinyiXu-0214.github.io"
+            target="_blank"
+            rel="noopener"
+          >
+            Xinyi Xu
+          </a>
 
-  <figure class="spk">
+          <span class="aff">
+            Northeastern University
+          </span>
 
-    <img
-      src="assets/organizers/yifan-yin.jpg"
-      alt="Yifan Yin"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
+        </figcaption>
 
-    <figcaption>
+      </figure>
 
-      <a
-        class="nm"
-        href="https://yifanyin11.github.io/"
-        target="_blank"
-        rel="noopener"
-      >
-        Yifan Yin
-      </a>
 
-      <span class="aff">
-        Johns Hopkins University
-      </span>
 
-    </figcaption>
+      <!-- =====================================================
+           YIFAN YIN
+           ===================================================== -->
 
-  </figure>
+      <figure class="spk">
 
+        <img
+          src="assets/organizers/yifan-yin.jpg"
+          alt="Yifan Yin"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
 
-  <!-- Siyuan Ma -->
+        <figcaption>
 
-  <figure class="spk">
+          <a
+            class="nm"
+            href="https://yifanyin11.github.io/"
+            target="_blank"
+            rel="noopener"
+          >
+            Yifan Yin
+          </a>
 
-    <img
-      src="assets/organizers/siyuan-ma.jpg"
-      alt="Siyuan Ma"
-      width="156"
-      height="156"
-      loading="lazy"
-    >
+          <span class="aff">
+            Johns Hopkins University
+          </span>
 
-    <figcaption>
+        </figcaption>
 
-      <a
-        class="nm"
-        href="https://SiyuanMaCS.github.io"
-        target="_blank"
-        rel="noopener"
-      >
-        Siyuan Ma
-      </a>
+      </figure>
 
-      <span class="aff">
-        CUHK
-      </span>
 
-    </figcaption>
 
-  </figure>
+      <!-- =====================================================
+           SIYUAN MA
+           ===================================================== -->
 
+      <figure class="spk">
 
-</div>
+        <img
+          src="assets/organizers/siyuan-ma.jpg"
+          alt="Siyuan Ma"
+          width="156"
+          height="156"
+          loading="lazy"
+        >
+
+        <figcaption>
+
+          <a
+            class="nm"
+            href="https://SiyuanMaCS.github.io"
+            target="_blank"
+            rel="noopener"
+          >
+            Siyuan Ma
+          </a>
+
+          <span class="aff">
+            CUHK
+          </span>
+
+        </figcaption>
+
+      </figure>
+
+
+    </div>
 
 
   </section>
@@ -1752,12 +1822,23 @@
     </div>
 
 
-
     <p>
 
 
       <a href="index.html">
         ← Back to Workshop
+      </a>
+
+
+      &nbsp;·&nbsp;
+
+
+      <a
+        href="https://github.com/tower-benchmark/TOWER"
+        target="_blank"
+        rel="noopener"
+      >
+        TOWER
       </a>
 
 
