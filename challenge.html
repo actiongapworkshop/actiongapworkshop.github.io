@@ -2,60 +2,92 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>G2A Jenga Challenge | CoRL 2026</title>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    G2A Jenga Challenge | CoRL 2026
+  </title>
+
 
   <meta
     name="description"
     content="G2A Jenga Challenge at CoRL 2026 — an interactive benchmark for evaluating action-conditioned world models and world action models through spatial reasoning, physical forecasting, and robot manipulation."
   >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
 
   <link
     href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="assets/style.css">
+
+  <link
+    rel="stylesheet"
+    href="assets/style.css"
+  >
+
 </head>
+
 
 <body>
 
+
+<!-- =========================================================
+     TOP BAR
+     ========================================================= -->
+
 <nav>
+
   <div class="nav-inner">
 
-    <a class="brand" href="index.html">
+
+    <a
+      class="brand"
+      href="index.html"
+    >
+
       <span class="dot"></span>
+
       CoRL&nbsp;2026&nbsp;G2A
+
     </a>
 
-    <button
-      class="nav-toggle"
-      aria-label="Menu"
-      onclick="document.getElementById('nl').classList.toggle('open')"
-    >
-      &#9776;
-    </button>
 
-    <div class="nav-links" id="nl">
-      <a href="index.html">Workshop</a>
-      <a href="#overview">Overview</a>
-      <a href="#tasks">Tasks</a>
-      <a href="#evaluation">Evaluation</a>
-      <a href="#participation">Participate</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#organizers">Organizers</a>
+    <div class="nav-links">
+
+      <a href="index.html">
+        ← Back to Workshop
+      </a>
+
     </div>
 
+
   </div>
+
 </nav>
 
 
+
 <main>
+
 
   <!-- =========================================================
        HERO
@@ -63,59 +95,102 @@
 
   <header class="hero">
 
+
     <h1>
-      <span class="g2a">G2A Jenga Challenge</span>
+
+      <span class="g2a">
+        G2A Jenga Challenge
+      </span>
+
     </h1>
+
 
     <p class="sub">
       Forecast. Plan. Act.
     </p>
 
-    <p class="lead" style="max-width: 900px; margin: 20px auto 0;">
+
+    <p
+      class="lead"
+      style="max-width: 900px; margin: 20px auto 0;"
+    >
+
       An interactive benchmark for evaluating whether world and action models
       can understand spatial structure, forecast the outcomes of candidate
       robot actions, and use those predictions to guide reliable manipulation.
+
     </p>
+
 
     <div class="hero-facts">
 
+
       <div class="fact">
-        <span class="lbl">Phase 1</span>
-        <span class="val">Single-Arm · Sim Only</span>
+
+        <span class="lbl">
+          Phase 1
+        </span>
+
+        <span class="val">
+          Single-Arm · Sim Only
+        </span>
+
         <span class="note">
           Interactive Jenga manipulation in simulation
         </span>
+
       </div>
 
+
       <div class="fact">
-        <span class="lbl">Phase 2</span>
-        <span class="val">Bimanual · Sim &amp; Real</span>
+
+        <span class="lbl">
+          Phase 2
+        </span>
+
+        <span class="val">
+          Bimanual · Sim &amp; Real
+        </span>
+
         <span class="note">
           Sim-to-real evaluation on a dual-arm setup
         </span>
+
       </div>
 
+
       <div class="fact">
-        <span class="lbl">Venue</span>
+
+        <span class="lbl">
+          Venue
+        </span>
+
         <span class="val">
           CoRL 2026 · Austin, Texas
         </span>
+
         <span class="note">
           G2A Workshop · November 12, 2026
         </span>
+
       </div>
+
 
     </div>
 
+
     <div class="cta-row">
 
-      <!-- TODO: replace with challenge GitHub -->
+
+      <!-- TODO: replace # with final GitHub URL -->
+
       <a
         href="#"
         class="btn btn-primary"
       >
         Get Started
       </a>
+
 
       <a
         href="leaderboard.html"
@@ -124,6 +199,7 @@
         Leaderboard
       </a>
 
+
       <a
         href="#tasks"
         class="btn btn-ghost"
@@ -131,9 +207,12 @@
         View Tasks
       </a>
 
+
     </div>
 
+
   </header>
+
 
 
   <!-- =========================================================
@@ -142,33 +221,51 @@
 
   <section id="overview">
 
+
     <div class="sec-head">
-      <span class="sec-num">01</span>
-      <h2>Challenge Overview</h2>
+
+      <span class="sec-num">
+        01
+      </span>
+
+      <h2>
+        Challenge Overview
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       The G2A Jenga Challenge is an interactive robot manipulation benchmark
       for evaluating Action-Conditioned World Models (ACWMs), World Action
       Models (WAMs), and related approaches in settings where understanding
       the consequences of an action is critical to success.
+
     </p>
 
+
     <p class="prose">
+
       Jenga provides a compact but challenging testbed for spatial reasoning,
       physical forecasting, and closed-loop interaction. Before executing an
       action, a capable model should be able to reason about the current tower
       structure, predict the outcomes of alternative actions, and select actions
       that accomplish the task without destabilizing the scene.
+
     </p>
 
+
     <p class="prose">
+
       The challenge evaluates this capability through manipulation tasks
       involving block transfer, extraction, replacement, and coordinated
       interaction. Rather than evaluating visual prediction alone, the
       benchmark asks whether predicted future outcomes can support executable
       and reliable robot behavior.
+
     </p>
+
 
     <div class="callout">
 
@@ -177,9 +274,11 @@
       </span>
 
       <p>
+
         Can a model forecast the physical consequences of different robot
         actions before execution, and use those forecasts to choose actions
         that successfully manipulate a structured and fragile environment?
+
       </p>
 
     </div>
@@ -192,6 +291,7 @@
       </span>
 
       <p>
+
         Spatial Understanding
         &rarr;
         Action Rollout
@@ -201,11 +301,14 @@
         Action Selection
         &rarr;
         Execution
+
       </p>
 
     </div>
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -214,18 +317,31 @@
 
   <section id="setup">
 
+
     <div class="sec-head">
-      <span class="sec-num">02</span>
-      <h2>Benchmark Setup</h2>
+
+      <span class="sec-num">
+        02
+      </span>
+
+      <h2>
+        Benchmark Setup
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       The benchmark is constructed from real Jenga environments and recreated
       as interactive simulation environments for controlled and repeatable
       evaluation.
+
     </p>
 
+
     <div class="track-grid">
+
 
       <div class="track">
 
@@ -238,17 +354,22 @@
         </h4>
 
         <p>
+
           The physical scene is captured using an Insta360 X5 panoramic camera.
           The captured scene is reconstructed with Marble to obtain a digital
           world representation, which is then imported into Isaac Sim for
           lighting, geometry, and collision-surface construction.
+
         </p>
 
         <span class="len">
+
           Real capture · Marble reconstruction · Isaac Sim
+
         </span>
 
       </div>
+
 
 
       <div class="track">
@@ -262,16 +383,21 @@
         </h4>
 
         <p>
+
           Robot and camera models are integrated into the reconstructed scene.
           Camera geometry, robot configuration, and relevant dynamics
           parameters are aligned between the physical and simulated setups.
+
         </p>
 
         <span class="len">
+
           Camera alignment · Robot alignment · Dynamics matching
+
         </span>
 
       </div>
+
 
 
       <div class="track">
@@ -285,16 +411,21 @@
         </h4>
 
         <p>
+
           Jenga blocks and task objects are added with interactive physical
           properties, enabling candidate robot actions to be rolled out and
           evaluated inside the simulator before execution.
+
         </p>
 
         <span class="len">
+
           Contacts · Collisions · Interactive object dynamics
+
         </span>
 
       </div>
+
 
     </div>
 
@@ -311,7 +442,9 @@
 
     </div>
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -320,18 +453,31 @@
 
   <section id="phases">
 
+
     <div class="sec-head">
-      <span class="sec-num">03</span>
-      <h2>Challenge Phases</h2>
+
+      <span class="sec-num">
+        03
+      </span>
+
+      <h2>
+        Challenge Phases
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       The challenge progresses from controlled single-arm simulation to
       coordinated bimanual manipulation evaluated in both simulation and the
       physical world.
+
     </p>
 
+
     <div class="track-grid">
+
 
       <div class="track">
 
@@ -344,17 +490,22 @@
         </h4>
 
         <p>
+
           Participants develop and evaluate models in a single-arm interactive
           simulator reconstructed from the real environment. The focus is on
           spatial reasoning, action forecasting, contact-aware planning, and
           manipulation under fragile physical constraints.
+
         </p>
 
         <span class="len">
+
           Single arm · Simulation · 2–3 manipulation tasks
+
         </span>
 
       </div>
+
 
 
       <div class="track">
@@ -368,21 +519,28 @@
         </h4>
 
         <p>
+
           Phase 2 extends the benchmark to coordinated dual-arm manipulation.
           Models are evaluated in simulation and the corresponding physical
           robot setup, enabling direct study of simulation performance,
           real-world performance, and their correlation.
+
         </p>
 
         <span class="len">
+
           Dual arm · Simulation + Real · Sim-to-real correlation
+
         </span>
 
       </div>
 
+
     </div>
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -391,19 +549,31 @@
 
   <section id="tasks">
 
+
     <div class="sec-head">
-      <span class="sec-num">04</span>
-      <h2>Phase 1 Tasks</h2>
+
+      <span class="sec-num">
+        04
+      </span>
+
+      <h2>
+        Phase 1 Tasks
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       Phase 1 contains Jenga manipulation tasks with increasing requirements
       for spatial reasoning, physical forecasting, contact-aware interaction,
       and long-horizon execution.
+
     </p>
 
 
     <div class="track-grid">
+
 
       <!-- TASK 1 -->
 
@@ -418,16 +588,21 @@
         </h4>
 
         <p>
+
           Transfer the center block from selected layers of a source tower to
           the corresponding positions of a target tower. Evaluation instances
           vary in the number and location of blocks that must be transferred.
+
         </p>
 
         <span class="len">
+
           Spatial correspondence · Pick-and-place · Long-horizon consistency
+
         </span>
 
       </div>
+
 
 
       <!-- TASK 2 -->
@@ -443,16 +618,21 @@
         </h4>
 
         <p>
+
           Manipulate a cross-oriented Jenga structure by sequentially
           transferring blocks between towers while preserving the intended
           structure and avoiding collapse.
+
         </p>
 
         <span class="len">
+
           Sequential manipulation · Structure preservation · Stability
+
         </span>
 
       </div>
+
 
 
       <!-- TASK 3 -->
@@ -468,35 +648,46 @@
         </h4>
 
         <p>
+
           Insert a new block to push a designated target block out of the
           tower, while simultaneously occupying and preserving the target
           block's original position.
+
         </p>
 
         <span class="len">
+
           Contact reasoning · Action forecasting · Precise insertion
+
         </span>
 
       </div>
 
+
     </div>
+
 
 
     <h3 class="sub-head">
       Tower Transfer Evaluation Set
     </h3>
 
+
     <p class="prose">
+
       The current Tower Transfer setup includes 1-, 2-, and 3-layer variants,
       with 50 evaluation instances per setting for a total of 150 instances.
       Additional task configurations may be added before the final benchmark
       release.
+
     </p>
+
 
 
     <h3 class="sub-head">
       Demo Videos
     </h3>
+
 
 
     <div class="callout">
@@ -512,6 +703,7 @@
     </div>
 
 
+
     <div class="callout">
 
       <span class="k">
@@ -523,6 +715,7 @@
       </p>
 
     </div>
+
 
 
     <div class="callout">
@@ -537,7 +730,9 @@
 
     </div>
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -546,33 +741,58 @@
 
   <section id="evaluation">
 
+
     <div class="sec-head">
-      <span class="sec-num">05</span>
-      <h2>Evaluation</h2>
+
+      <span class="sec-num">
+        05
+      </span>
+
+      <h2>
+        Evaluation
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       Models are evaluated on both task completion and the physical quality
       of their interaction with the Jenga structure.
+
     </p>
 
 
     <div class="dates-wrap">
 
+
       <table class="dates">
+
 
         <thead>
 
           <tr>
-            <th>Metric</th>
-            <th>Description</th>
-            <th>Direction</th>
+
+            <th>
+              Metric
+            </th>
+
+            <th>
+              Description
+            </th>
+
+            <th>
+              Direction
+            </th>
+
           </tr>
 
         </thead>
 
 
+
         <tbody>
+
 
           <tr>
 
@@ -581,8 +801,10 @@
             </td>
 
             <td>
+
               Fraction of evaluation episodes in which the complete task is
               successfully finished.
+
             </td>
 
             <td class="dt">
@@ -590,6 +812,7 @@
             </td>
 
           </tr>
+
 
 
           <tr>
@@ -599,8 +822,10 @@
             </td>
 
             <td>
+
               Fraction of required tower levels successfully completed before
               termination.
+
             </td>
 
             <td class="dt">
@@ -610,6 +835,7 @@
           </tr>
 
 
+
           <tr>
 
             <td>
@@ -617,8 +843,10 @@
             </td>
 
             <td>
+
               Fraction of episodes in which the Jenga structure collapses
               during execution.
+
             </td>
 
             <td class="dt">
@@ -626,6 +854,7 @@
             </td>
 
           </tr>
+
 
 
           <tr>
@@ -635,8 +864,10 @@
             </td>
 
             <td>
+
               Time required from task initialization until successful
               completion or termination.
+
             </td>
 
             <td class="dt">
@@ -645,11 +876,15 @@
 
           </tr>
 
+
         </tbody>
+
 
       </table>
 
+
     </div>
+
 
 
     <div class="callout">
@@ -659,15 +894,19 @@
       </span>
 
       <p>
+
         Success Rate will be used as the primary benchmark metric in the
         initial release. Progress, collapse, and completion time will be
         reported as complementary metrics. The final ranking protocol will be
         announced with the evaluation release.
+
       </p>
 
     </div>
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -676,16 +915,28 @@
 
   <section id="participation">
 
+
     <div class="sec-head">
-      <span class="sec-num">06</span>
-      <h2>Data &amp; Participation</h2>
+
+      <span class="sec-num">
+        06
+      </span>
+
+      <h2>
+        Data &amp; Participation
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       We provide the simulation environment, task definitions, demonstration
       data, evaluation configuration, and standardized test protocol required
       to participate.
+
     </p>
+
 
 
     <h3 class="sub-head">
@@ -693,54 +944,82 @@
     </h3>
 
 
+
     <ul class="topic-list">
 
+
       <li>
+
         <b>Simulation environment.</b>
+
         The reconstructed Jenga environment and task configurations used for
         challenge evaluation.
+
       </li>
 
 
+
       <li>
+
         <b>Training and test splits.</b>
+
         Standardized train/test settings for each released task.
+
       </li>
 
 
+
       <li>
+
         <b>Demonstrations.</b>
+
         Approximately 50 demonstration trajectories per configured setting,
         together with representative real-robot trajectories where applicable.
+
       </li>
 
 
+
       <li>
+
         <b>Robot actions.</b>
+
         Standardized joint-space representations and reference trajectories
         for interfacing participant models with the evaluation environment.
+
       </li>
 
 
+
       <li>
+
         <b>Evaluation code.</b>
+
         Evaluation scripts, task configuration files, and submission-format
         validation tools.
+
       </li>
+
 
 
       <li>
+
         <b>Leaderboard.</b>
+
         A public leaderboard for tracking benchmark performance across
         challenge submissions.
+
       </li>
 
+
     </ul>
+
 
 
     <h3 class="sub-head">
       Submission Flow
     </h3>
+
 
 
     <div class="callout">
@@ -750,6 +1029,7 @@
       </span>
 
       <p>
+
         Train / Demo Data
         &rarr;
         Participant Model
@@ -761,9 +1041,11 @@
         Evaluation Server
         &rarr;
         Leaderboard
+
       </p>
 
     </div>
+
 
 
     <h3 class="sub-head">
@@ -771,46 +1053,71 @@
     </h3>
 
 
+
     <ul class="topic-list">
 
+
       <li>
+
         <b>1. Download.</b>
+
         Download the simulator, task definitions, demonstrations, and starter
         code from the challenge repository.
+
       </li>
 
 
+
       <li>
+
         <b>2. Develop.</b>
+
         Train, adapt, or prompt your model using the permitted resources.
+
       </li>
 
 
+
       <li>
+
         <b>3. Run.</b>
+
         Produce outputs for the released challenge test inputs using the
         required submission format.
+
       </li>
 
 
+
       <li>
+
         <b>4. Submit.</b>
+
         Upload the model outputs to the evaluation system.
+
       </li>
 
 
+
       <li>
+
         <b>5. Evaluate.</b>
+
         Valid submissions are evaluated using the official benchmark metrics
         and displayed on the leaderboard.
+
       </li>
+
 
     </ul>
 
 
+
     <div class="cta-row">
 
+
       <!-- TODO: GitHub URL -->
+
       <a
         href="#"
         class="btn btn-primary"
@@ -819,7 +1126,9 @@
       </a>
 
 
+
       <!-- TODO: Dataset URL -->
+
       <a
         href="#"
         class="btn btn-ghost"
@@ -828,13 +1137,16 @@
       </a>
 
 
+
       <!-- TODO: Submission server URL -->
+
       <a
         href="#"
         class="btn btn-ghost"
       >
         Submit Results
       </a>
+
 
 
       <a
@@ -844,15 +1156,21 @@
         Leaderboard
       </a>
 
+
     </div>
 
 
+
     <p class="dates-note">
+
       Repository, dataset, and submission-server links will be added as the
       corresponding challenge components are released.
+
     </p>
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -861,24 +1179,39 @@
 
   <section id="phase2">
 
+
     <div class="sec-head">
-      <span class="sec-num">07</span>
-      <h2>Phase 2: Bimanual Sim-to-Real</h2>
+
+      <span class="sec-num">
+        07
+      </span>
+
+      <h2>
+        Phase 2: Bimanual Sim-to-Real
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       Phase 2 extends the benchmark from single-arm simulation to coordinated
       bimanual manipulation evaluated in both simulation and the real world.
+
     </p>
 
 
+
     <p class="prose">
+
       Participants will receive the corresponding simulation environment and
       task data for the bimanual setup. Evaluation will compare simulated
       performance with execution on the physical robot system, allowing the
       challenge to study not only task success but also how reliably simulation
       performance predicts real-world behavior.
+
     </p>
+
 
 
     <div class="callout">
@@ -888,11 +1221,14 @@
       </span>
 
       <p>
+
         Phase 2 explicitly evaluates the relationship between simulated task
         performance and physical robot performance.
+
       </p>
 
     </div>
+
 
 
     <div class="callout">
@@ -909,10 +1245,10 @@
 
 
     <!--
-      TODO:
-      Replace the placeholder above with the Phase 2 setup image.
 
-      Example:
+      TODO:
+
+      Add Phase 2 image later:
 
       <figure style="margin-top: 24px;">
 
@@ -928,9 +1264,12 @@
         >
 
       </figure>
+
     -->
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -939,32 +1278,55 @@
 
   <section id="timeline">
 
+
     <div class="sec-head">
-      <span class="sec-num">08</span>
-      <h2>Important Dates</h2>
+
+      <span class="sec-num">
+        08
+      </span>
+
+      <h2>
+        Important Dates
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       Challenge components will be released progressively as the simulation,
       real-world setup, and evaluation pipeline are finalized.
+
     </p>
+
 
 
     <div class="dates-wrap">
 
+
       <table class="dates">
+
 
         <thead>
 
           <tr>
-            <th>Milestone</th>
-            <th>Date</th>
+
+            <th>
+              Milestone
+            </th>
+
+            <th>
+              Date
+            </th>
+
           </tr>
 
         </thead>
 
 
+
         <tbody>
+
 
           <tr>
 
@@ -977,6 +1339,7 @@
             </td>
 
           </tr>
+
 
 
           <tr>
@@ -992,6 +1355,7 @@
           </tr>
 
 
+
           <tr>
 
             <td>
@@ -1003,6 +1367,7 @@
             </td>
 
           </tr>
+
 
 
           <tr class="hl">
@@ -1017,19 +1382,27 @@
 
           </tr>
 
+
         </tbody>
 
+
       </table>
+
 
     </div>
 
 
+
     <p class="dates-note">
+
       The phase-specific interpretation of the October evaluation milestones
       will be updated once the final public evaluation schedule is confirmed.
+
     </p>
 
+
   </section>
+
 
 
   <!-- =========================================================
@@ -1038,14 +1411,26 @@
 
   <section id="rewards">
 
+
     <div class="sec-head">
-      <span class="sec-num">09</span>
-      <h2>Challenge Awards</h2>
+
+      <span class="sec-num">
+        09
+      </span>
+
+      <h2>
+        Challenge Awards
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       Top-performing teams will be recognized at the G2A Workshop at CoRL 2026.
+
     </p>
+
 
 
     <div class="callout">
@@ -1061,34 +1446,8 @@
     </div>
 
 
-    <!--
-
-    TODO:
-
-    After the prize structure is confirmed, replace the box above with:
-
-    <ul class="topic-list">
-
-      <li>
-        <b>1st Place:</b>
-        ...
-      </li>
-
-      <li>
-        <b>2nd Place:</b>
-        ...
-      </li>
-
-      <li>
-        <b>3rd Place:</b>
-        ...
-      </li>
-
-    </ul>
-
-    -->
-
   </section>
+
 
 
   <!-- =========================================================
@@ -1097,30 +1456,38 @@
 
   <section id="organizers">
 
+
     <div class="sec-head">
-      <span class="sec-num">10</span>
-      <h2>Challenge Organizers</h2>
+
+      <span class="sec-num">
+        10
+      </span>
+
+      <h2>
+        Challenge Organizers
+      </h2>
+
     </div>
 
+
     <p class="lead">
+
       The G2A Jenga Challenge is organized by researchers working across
       generative modeling, robot learning, simulation, and embodied
       intelligence.
+
     </p>
+
 
 
     <div class="spk-grid org-grid">
 
-      <!--
-        TODO:
-        Replace the following placeholders with your final challenge
-        organizer list.
-      -->
 
+      <!-- TODO: replace with real challenge organizers -->
 
-      <!-- ORGANIZER 1 -->
 
       <figure class="spk">
+
 
         <img
           src="assets/challenge-organizers/person-1.jpg"
@@ -1130,7 +1497,9 @@
           loading="lazy"
         >
 
+
         <figcaption>
+
 
           <a
             class="nm"
@@ -1138,21 +1507,28 @@
             target="_blank"
             rel="noopener"
           >
+
             Organizer Name
+
           </a>
 
+
           <span class="aff">
+
             Institution
+
           </span>
 
+
         </figcaption>
+
 
       </figure>
 
 
-      <!-- ORGANIZER 2 -->
 
       <figure class="spk">
+
 
         <img
           src="assets/challenge-organizers/person-2.jpg"
@@ -1162,7 +1538,9 @@
           loading="lazy"
         >
 
+
         <figcaption>
+
 
           <a
             class="nm"
@@ -1170,21 +1548,28 @@
             target="_blank"
             rel="noopener"
           >
+
             Organizer Name
+
           </a>
 
+
           <span class="aff">
+
             Institution
+
           </span>
 
+
         </figcaption>
+
 
       </figure>
 
 
-      <!-- ORGANIZER 3 -->
 
       <figure class="spk">
+
 
         <img
           src="assets/challenge-organizers/person-3.jpg"
@@ -1194,7 +1579,9 @@
           loading="lazy"
         >
 
+
         <figcaption>
+
 
           <a
             class="nm"
@@ -1202,22 +1589,33 @@
             target="_blank"
             rel="noopener"
           >
+
             Organizer Name
+
           </a>
 
+
           <span class="aff">
+
             Institution
+
           </span>
+
 
         </figcaption>
 
+
       </figure>
+
 
     </div>
 
+
   </section>
 
+
 </main>
+
 
 
 <!-- =========================================================
@@ -1226,179 +1624,51 @@
 
 <footer>
 
+
   <div class="foot-inner">
 
+
     <div class="brand">
+
       <span class="dot"></span>
+
       G2A Jenga Challenge · CoRL 2026
+
     </div>
 
+
+
     <p>
-      Contact:
-      <a href="mailto:action.gap.workshop@gmail.com">
-        action.gap.workshop@gmail.com
+
+
+      <a href="index.html">
+
+        ← Back to Workshop
+
       </a>
+
+
+      &nbsp;·&nbsp;
+
+
+      Contact:
+
+
+      <a href="mailto:action.gap.workshop@gmail.com">
+
+        action.gap.workshop@gmail.com
+
+      </a>
+
+
     </p>
+
 
   </div>
 
+
 </footer>
 
-
-<!-- =========================================================
-     NAVIGATION SCRIPT
-     ========================================================= -->
-
-<script>
-
-(function () {
-
-  var links = [].slice.call(
-    document.querySelectorAll(
-      '.nav-links a[href^="#"]'
-    )
-  );
-
-
-  var items = links
-    .map(function (a) {
-
-      return {
-
-        a: a,
-
-        el: document.getElementById(
-          a.getAttribute('href').slice(1)
-        )
-
-      };
-
-    })
-    .filter(function (i) {
-
-      return i.el;
-
-    });
-
-
-  if (!items.length) return;
-
-
-  var nav = document.querySelector('nav');
-
-
-  function setActive(el) {
-
-    items.forEach(function (i) {
-
-      var on = i.a === el;
-
-      i.a.classList.toggle(
-        'active',
-        on
-      );
-
-      if (on) {
-
-        i.a.setAttribute(
-          'aria-current',
-          'true'
-        );
-
-      } else {
-
-        i.a.removeAttribute(
-          'aria-current'
-        );
-
-      }
-
-    });
-
-  }
-
-
-  function update() {
-
-    var line =
-      window.pageYOffset +
-      (nav ? nav.offsetHeight : 0) +
-      12;
-
-
-    var current = items[0];
-
-
-    items.forEach(function (i) {
-
-      if (
-        i.el.getBoundingClientRect().top +
-        window.pageYOffset <= line
-      ) {
-
-        current = i;
-
-      }
-
-    });
-
-
-    if (
-      window.innerHeight +
-      window.pageYOffset >=
-      document.documentElement.scrollHeight - 2
-    ) {
-
-      current =
-        items[items.length - 1];
-
-    }
-
-
-    setActive(
-      current.a
-    );
-
-  }
-
-
-  window.addEventListener(
-    'scroll',
-    update,
-    {
-      passive: true
-    }
-  );
-
-
-  window.addEventListener(
-    'resize',
-    update
-  );
-
-
-  links.forEach(function (a) {
-
-    a.addEventListener(
-      'click',
-      function () {
-
-        document
-          .getElementById('nl')
-          .classList
-          .remove('open');
-
-      }
-    );
-
-  });
-
-
-  update();
-
-})();
-
-</script>
 
 </body>
 
