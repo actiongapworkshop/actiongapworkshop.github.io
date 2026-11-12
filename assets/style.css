@@ -304,3 +304,17 @@
   /* a page whose first element is a section sits right under the nav bar,
      so drop the rule that would double up with the nav's bottom border */
   main > section:first-child{border-top:none;padding-top:64px;}
+
+  /* day-of location highlight */
+  .where-banner{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:0 0 26px;
+    padding:16px 22px;border-radius:14px;color:#fff;
+    background:linear-gradient(100deg,var(--accent),var(--accent-2));
+    box-shadow:0 12px 28px -16px rgba(37,99,201,.7);}
+  .where-banner .wb-k{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px;}
+  .where-banner .wb-v{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,26px);}
+  .where-banner .wb-t{font-size:15px;opacity:.92;}
+  .where-banner .wb-z{margin-left:auto;background:#fff;color:var(--accent);font-weight:700;
+    padding:8px 16px;border-radius:999px;font-size:15px;}
+  .where-banner .wb-z:hover{text-decoration:none;opacity:.9;}
+  @media (max-width:640px){.where-banner .wb-z{margin-left:0;}}
