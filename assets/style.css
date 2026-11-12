@@ -318,3 +318,5 @@
     padding:8px 16px;border-radius:999px;font-size:15px;}
   .where-banner .wb-z:hover{text-decoration:none;opacity:.9;}
   @media (max-width:640px){.where-banner .wb-z{margin-left:0;}}
+
+  .sched-row .d .talk-title{display:block;margin-top:4px;font-style:italic;color:var(--ink-soft);font-size:15px;line-height:1.4;}
